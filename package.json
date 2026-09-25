@@ -1,19 +1,19 @@
 {
-  "name": "tsdown-template",
+  "name": "atsql",
   "type": "module",
-  "version": "0.2.1",
+  "version": "0.1.1",
   "private": true,
   "packageManager": "pnpm@10.24.0",
   "description": "A TypeScript npm library template powered by tsdown.",
   "author": "RingoTangs",
   "license": "MIT",
-  "homepage": "https://github.com/RingoTangs/tsdown-template#readme",
+  "homepage": "https://github.com/RingoTangs/atsql#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RingoTangs/tsdown-template.git"
+    "url": "git+https://github.com/RingoTangs/atsql.git"
   },
   "bugs": {
-    "url": "https://github.com/RingoTangs/tsdown-template/issues"
+    "url": "https://github.com/RingoTangs/atsql/issues"
   },
   "keywords": [
     "typescript",
