@@ -2302,7 +2302,6 @@ CREATE TABLE `safe_ctrl` (
 
 LOCK TABLES `safe_ctrl` WRITE;
 /*!40000 ALTER TABLE `safe_ctrl` DISABLE KEYS */;
-INSERT INTO `safe_ctrl` (`account`, `protect_type`, `protect_info`, `checksum`, `memo`) VALUES ('w04700115','total_switch','36','F94DEADFEE0F1C5339944EABABF108CE','');
 /*!40000 ALTER TABLE `safe_ctrl` ENABLE KEYS */;
 UNLOCK TABLES;
 
