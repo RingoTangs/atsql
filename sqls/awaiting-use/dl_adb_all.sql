@@ -883,45 +883,6 @@ CREATE TABLE `config` (
 
 LOCK TABLES `config` WRITE;
 /*!40000 ALTER TABLE `config` DISABLE KEYS */;
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','门派比武大会','{{CHANNEL_THREE_NAME}}:金系/{{CHANNEL_THREE_NAME}}:木系/{{CHANNEL_TWO_NAME}}:水系/{{CHANNEL_TWO_NAME}}:火系/{{CHANNEL_THREE_NAME}}:土系','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','baishou_shengyan','([\"{{CHANNEL_ONE_NAME}}\":({40,79,}),\"{{CHANNEL_ONE_NAME}}\":({80,99,}),\"{{CHANNEL_ONE_NAME}}\":({100,119,}),\"{{CHANNEL_ONE_NAME}}\":({120,159,}),])','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','chongzhi_fanli','({\"2017-03-18-00:00:00\",\"2017-03-20-17:14:59\", 1})','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','CITY_WAR_SERVER','{{CHANNEL_ONE_NAME}}','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','dongfu_tiaozhan','{{CHANNEL_ONE_NAME}}','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','douchong_dahui','{{CHANNEL_ONE_NAME}}','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','试道大会','{{CHANNEL_THREE_NAME}}:60-69,70-79,80-89/{{CHANNEL_THREE_NAME}}:90-99,100-109,110-119/{{CHANNEL_TWO_NAME}}:120-129,130-139,140-149,150-159,160-169','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','fishing_server','({\"{{CHANNEL_ONE_NAME}}\",\"{{CHANNEL_TWO_NAME}}\" })','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','group_buying_server','{{CHANNEL_ONE_NAME}}','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','hero_boss_server','{{CHANNEL_ONE_NAME}}','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','journey_of_asktao','([ \"date\" : \"20160713\", \"checksum\" : \"5FA8074842CF18DF6DDBEEB02BC8E289\" ])','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','ldb_host','127.0.0.1:','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','lgxy_server','{{CHANNEL_ONE_NAME}}','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','longxue_boss_server','{{CHANNEL_ONE_NAME}}','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','map_decorate_server','{{CHANNEL_ONE_NAME}}','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','mdb_host','127.0.0.1:','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','party_qkbgz','([4:\"{{CHANNEL_THREE_NAME}}\",3:\"{{CHANNEL_TWO_NAME}}\",2:\"{{CHANNEL_ONE_NAME}}\",])','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','party_qql','{{CHANNEL_ONE_NAME}}','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','party_sell_servers','{{CHANNEL_ONE_NAME}}','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','red_envelope','([ \"start_time\" : \"2016-01-09-00:00:00\", \"sort_end_time\" : \"2016-02-27-23:59:59\", \"end_time\" : \"2016-02-28-23:59:59\", \"envelope_list\" : ({ ([\"time\" : \"2016-01-18-14:00:00\",\"coin\" : 3000000,\"amount\" : 3000,]),([\"time\" : \"2016-01-18-16:00:00\",\"coin\" : 3000000,\"amount\" : 3000,]),([\"time\" : \"2016-01-23-14:00:00\",\"coin\" : 100000,\"amount\" : 100,]),([\"time\" : \"2016-01-23-16:00:00\",\"coin\" : 100000,\"amount\" : 100,]),([\"time\" : \"2016-01-24-14:00:00\",\"coin\" : 100000,\"amount\" : 100,]),([\"time\" : \"2016-01-24-16:00:00\",\"coin\" : 100000,\"amount\" : 100,]) }), \"sys_name\" : \"ê??ü?ê\", \"version\" : 3 ])','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','send_exp_online','([\"end_time\":\"2010-06-29-12:00:00\",\"start_time\":\"2010-06-29-10:00:00\",\"interval\":0,\"duration\":0,])','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','shengsidou','1','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','sncbc_open_gs','({\"{{CHANNEL_ONE_NAME}}\",\"{{CHANNEL_TWO_NAME}}\" })','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','super_boss_server','{{CHANNEL_ONE_NAME}}','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','task_control_server','{{CHANNEL_ONE_NAME}}','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','vendue_place','{{CHANNEL_ONE_NAME}}','','NULL');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','WAR_GROUP_A','{{CHANNEL_ONE_NAME}}','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','WAR_GROUP_B','{{CHANNEL_TWO_NAME}}','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','WAR_GROUP_C','{{CHANNEL_THREE_NAME}}','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','wedding_server','{{CHANNEL_ONE_NAME}}','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','world_boss_server','{{CHANNEL_ONE_NAME}}','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','world_level_config','0','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','wuzhuangyuan','{{CHANNEL_ONE_NAME}}:60-69,70-79/{{CHANNEL_ONE_NAME}}:80-89,90-99/{{CHANNEL_ONE_NAME}}:100-109,110-119/{{CHANNEL_ONE_NAME}}:120-129,130-139,140-149,150-159,160-169','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','xinfjjwz','([ \"start_time\" : \"2017-07-01-20:00:00\", \"end_time\" : \"2017-08-21-19:59:59\" ])','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','xinfu_chongbang','([ \"start_time\" : \"2016-08-08-00:00:00\", \"end_time\" : \"2016-08-31-23:59:59\", \"bonus_time\" : \"2016-09-06-23:59:59\", \"order_end_time\" : \"2016-09-10-23:59:59\", \"url\" : \"http://wd.gyyx.cn/huodong/wdxf/tf/bwcx/cbbs/index.html\" ])','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','xiygc_zhenyz','({\"{{CHANNEL_ONE_NAME}}\"})','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','xiygc_zhenyzb','([\"40-69\":1,\"70-79\":1,\"80-89\":1,\"90-99\":1,\"100-109\":1,\"110-119\":1,\"120-129\":1,\"130-139\":1,\"140-149\":1,\"150-159\":1,\"160-169\":1])','','');
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','yuqing_shandian_challenge','{{CHANNEL_ONE_NAME}}','',NULL);
--- INSERT INTO `config` (`version`, `dist`, `section`, `name`, `value`, `checksum`, `memo`) VALUES ('','{{ZONE}}','global','比武大会','{{CHANNEL_THREE_NAME}}:60-69,70-79/{{CHANNEL_ONE_NAME}}:80-89,90-99/{{CHANNEL_TWO_NAME}}:100-109,110-119/{{CHANNEL_THREE_NAME}}:120-129,130-139,140-149','',NULL);
 -- atsql:use:segment_config
 /*!40000 ALTER TABLE `config` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2384,9 +2345,6 @@ CREATE TABLE `server` (
 
 LOCK TABLES `server` WRITE;
 /*!40000 ALTER TABLE `server` DISABLE KEYS */;
--- INSERT INTO `server` (`server`, `alias`, `ip`, `port`, `max_user`, `dist`, `enable`, `server_key`, `when_iid_duplicated`, `when_challenge_failed`, `when_found_cheater`, `punish_id`, `save_when_coin_cost`, `charge_level`, `charge_interval`, `id`, `ahserver`, `ip_wt`, `ip_dx`, `enable_multi_ip`, `memo`) VALUES ('{{CHANNEL_THREE_NAME}}','','{{CHANNEL_IP}}',8162,1200,'{{ZONE}}',1,'','','','',0,0,0,0,3,'','','',0,NULL);
--- INSERT INTO `server` (`server`, `alias`, `ip`, `port`, `max_user`, `dist`, `enable`, `server_key`, `when_iid_duplicated`, `when_challenge_failed`, `when_found_cheater`, `punish_id`, `save_when_coin_cost`, `charge_level`, `charge_interval`, `id`, `ahserver`, `ip_wt`, `ip_dx`, `enable_multi_ip`, `memo`) VALUES ('{{CHANNEL_ONE_NAME}}','','{{CHANNEL_IP}}',8160,1200,'{{ZONE}}',1,'network','','','',0,0,0,600,1,'apex1','','',0,NULL);
--- INSERT INTO `server` (`server`, `alias`, `ip`, `port`, `max_user`, `dist`, `enable`, `server_key`, `when_iid_duplicated`, `when_challenge_failed`, `when_found_cheater`, `punish_id`, `save_when_coin_cost`, `charge_level`, `charge_interval`, `id`, `ahserver`, `ip_wt`, `ip_dx`, `enable_multi_ip`, `memo`) VALUES ('{{CHANNEL_TWO_NAME}}','','{{CHANNEL_IP}}',8161,1200,'{{ZONE}}',1,'','','','',0,0,0,0,2,'','','',0,NULL);
 -- atsql:use:segment_server
 /*!40000 ALTER TABLE `server` ENABLE KEYS */;
 UNLOCK TABLES;
