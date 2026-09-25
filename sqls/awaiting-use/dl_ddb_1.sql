@@ -141,8 +141,6 @@ CREATE TABLE `basic_char_info` (
 
 LOCK TABLES `basic_char_info` WRITE;
 /*!40000 ALTER TABLE `basic_char_info` DISABLE KEYS */;
-INSERT INTO `basic_char_info` (`gid`, `name`, `polar`, `gender`, `tt_weibo_name`, `hide_tt_weibo`, `time`) VALUES ('0000000000000001','Î÷·ç',1,1,'',0,'20180413155302');
-INSERT INTO `basic_char_info` (`gid`, `name`, `polar`, `gender`, `tt_weibo_name`, `hide_tt_weibo`, `time`) VALUES ('0000000000000002','´ó°Ó°Ó',1,1,'',0,'20180413155549');
 /*!40000 ALTER TABLE `basic_char_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
