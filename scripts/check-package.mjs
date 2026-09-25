@@ -11,6 +11,13 @@ const requiredFiles = [
   'dist/index.d.mts',
   'dist/index.mjs',
   'sqls/awaiting-use/dl_adb_all.sql',
+  'sqls/awaiting-use/dl_ddb_1.sql',
+  'sqls/awaiting-use/dl_dmdb_1.sql',
+  'sqls/awaiting-use/dl_ldb_1.sql',
+  'sqls/awaiting-use/dl_ldb_all.sql',
+  'sqls/awaiting-use/dl_mdb_1.sql',
+  'sqls/awaiting-use/dl_mdb_all.sql',
+  'sqls/awaiting-use/dl_tdb_1.sql',
   'sqls/awaiting-use/segment_config.sql',
   'sqls/awaiting-use/segment_server.sql',
 ]
