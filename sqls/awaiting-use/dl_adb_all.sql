@@ -30,7 +30,7 @@
 --- 4. DBA_DAILI_IP: dba server ip
 --- 5. FALLBACK_IP: unknown server ip, but need to config
 --- 6. ZONE: 大区名称. 比如：万里长城
---- 7. CHANNEL_IP: 频道名称. 比如：万里长城一线
+--- 7. CHANNEL_IP: 频道服务器IP. 比如：万里长城一线，该频道服务器的 IP
 
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `dl_adb_all` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
