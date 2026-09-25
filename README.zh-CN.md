@@ -4,27 +4,31 @@
 
 [English](./README.md) | 简体中文
 
-## 环境要求
+## 安装与使用
 
-- Node.js `22.23.2`
-- pnpm `10`
+atsql 要求 Node.js `>=22.12.0`。
 
-## 构建与使用
+全局安装：
 
 ```bash
-pnpm install
-pnpm build
-node dist/cli.mjs gen \
+npm install --global atsql
+atsql gen \
   --ip 47.97.106.166 \
   --zone 万里长城 \
   --channel-count 5 \
   --out ./all.sql
 ```
 
-也可以使用短参数：
+也可以不全局安装，直接运行：
 
 ```bash
-node dist/cli.mjs gen -i 47.97.106.166 -z 万里长城 -c 5 -o ./all.sql
+npx atsql gen -i 47.97.106.166 -z 万里长城 -c 5 -o ./all.sql
+```
+
+全局命令也支持短参数：
+
+```bash
+atsql gen -i 47.97.106.166 -z 万里长城 -c 5 -o ./all.sql
 ```
 
 `--ip`、`--zone` 和 `--out` 为必填参数。`--channel-count` 默认值为 `3`，允许范围为
@@ -51,6 +55,8 @@ const sql = await generateSql({
 `generateSql` 返回包含 GB18030 编码 SQL 的 `Buffer`。
 
 ## 开发命令
+
+开发环境使用 Node.js `22.23.2` 和 pnpm `10`。
 
 - `pnpm dev`：生成开发构建
 - `pnpm build`：生成生产构建

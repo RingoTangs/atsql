@@ -5,27 +5,31 @@ in `sqls/awaiting-use`.
 
 简体中文说明见 [README.zh-CN.md](./README.zh-CN.md)。
 
-## Requirements
+## Installation
 
-- Node.js `22.23.2`
-- pnpm `10`
+atsql requires Node.js `>=22.12.0`.
 
-## Build and run
+Install it globally:
 
 ```bash
-pnpm install
-pnpm build
-node dist/cli.mjs gen \
+npm install --global atsql
+atsql gen \
   --ip 47.97.106.166 \
   --zone 万里长城 \
   --channel-count 5 \
   --out ./all.sql
 ```
 
-Short options are also supported:
+You can also run it without a global installation:
 
 ```bash
-node dist/cli.mjs gen -i 47.97.106.166 -z 万里长城 -c 5 -o ./all.sql
+npx atsql gen -i 47.97.106.166 -z 万里长城 -c 5 -o ./all.sql
+```
+
+Short options work with the global command too:
+
+```bash
+atsql gen -i 47.97.106.166 -z 万里长城 -c 5 -o ./all.sql
 ```
 
 `--ip`, `--zone`, and `--out` are required. `--channel-count` defaults to `3`
@@ -54,6 +58,8 @@ const sql = await generateSql({
 `generateSql` returns a `Buffer` containing GB18030-encoded SQL.
 
 ## Development
+
+Development requires Node.js `22.23.2` and pnpm `10`.
 
 - `pnpm dev`: create development bundles
 - `pnpm build`: create production bundles
