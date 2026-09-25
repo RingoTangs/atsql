@@ -33,16 +33,7 @@
   },
   "files": [
     "dist",
-    "sqls/awaiting-use/dl_adb_all.sql",
-    "sqls/awaiting-use/dl_ddb_1.sql",
-    "sqls/awaiting-use/dl_dmdb_1.sql",
-    "sqls/awaiting-use/dl_ldb_1.sql",
-    "sqls/awaiting-use/dl_ldb_all.sql",
-    "sqls/awaiting-use/dl_mdb_1.sql",
-    "sqls/awaiting-use/dl_mdb_all.sql",
-    "sqls/awaiting-use/dl_tdb_1.sql",
-    "sqls/awaiting-use/segment_config.sql",
-    "sqls/awaiting-use/segment_server.sql"
+    "sqls/awaiting-use/*.sql"
   ],
   "publishConfig": {
     "access": "public",
@@ -70,7 +61,7 @@
     "typecheck": "tsc -b",
     "check": "pnpm lint && pnpm format && pnpm typecheck && pnpm test:run",
     "check:fix": "pnpm lint:fix && pnpm format:fix",
-    "pack:check": "node scripts/check-package.mjs",
+    "pack:check": "npm pack --dry-run --ignore-scripts --cache node_modules/.cache/npm",
     "prepublishOnly": "pnpm check && pnpm build && pnpm pack:check"
   },
   "dependencies": {
