@@ -1305,7 +1305,7 @@ CREATE TABLE `dba` (
 LOCK TABLES `dba` WRITE;
 /*!40000 ALTER TABLE `dba` DISABLE KEYS */;
 INSERT INTO `dba` (`dba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('dba_coding','10.2.50.30',8200,'coding','',1,NULL);
-INSERT INTO `dba` (`dba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('dba_daili','118.24.7.124',8120,'问道一区','',1,NULL);
+INSERT INTO `dba` (`dba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('dba_daili','{{DBA_DAILI_IP}}',8120,'问道一区','',1,NULL);
 INSERT INTO `dba` (`dba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('dba_dongsh','10.3.4.35',8200,'dongsh','',1,NULL);
 INSERT INTO `dba` (`dba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('dba_jiangw_30','10.2.50.30',8020,'jiangw_30','',1,NULL);
 INSERT INTO `dba` (`dba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('dba_jiangw_pk','118.24.7.124',8022,'pk','',2,NULL);
