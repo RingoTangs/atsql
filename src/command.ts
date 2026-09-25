@@ -1,8 +1,9 @@
+import type { WritableOutput } from './terminal'
+
 import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
 
-import chalk from 'chalk'
 import { Command, InvalidArgumentError } from 'commander'
 
 import pkg from '../package.json' with { type: 'json' }
@@ -13,10 +14,7 @@ import {
   isValidChannelCount,
 } from './config'
 import { generateSql } from './generator'
-
-interface WritableOutput {
-  write: (message: string) => unknown
-}
+import { createTerminal } from './terminal'
 
 interface CommandDependencies {
   cwd?: string
@@ -43,6 +41,7 @@ export const createProgram = (
   const cwd = dependencies.cwd ?? process.cwd()
   const stdout = dependencies.stdout ?? process.stdout
   const stderr = dependencies.stderr ?? process.stderr
+  const terminal = createTerminal({ stdout, stderr })
   const program = new Command()
 
   program
@@ -98,11 +97,11 @@ export const createProgram = (
           throw error
         }
 
-        stdout.write(
-          `${chalk.green('Generated')} ${outputPath} (${options.channelCount} channels, GB18030)\n`,
+        terminal.success(
+          `${outputPath} (${options.channelCount} channels, GB18030)`,
         )
-        stdout.write(
-          `${chalk.yellow('Warning:')} the generated SQL contains DROP DATABASE and DROP TABLE statements.\n`,
+        terminal.warning(
+          'the generated SQL contains DROP DATABASE and DROP TABLE statements.',
         )
       },
     )
