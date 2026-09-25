@@ -45,7 +45,7 @@
     "*.sql": "sql"
   },
   "[sql]": {
-    "files.encoding": "gb2312",
+    "files.encoding": "gb18030",
     "files.autoGuessEncoding": false
   }
 }
