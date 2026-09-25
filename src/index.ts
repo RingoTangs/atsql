@@ -1,1 +1,2 @@
-export const sum = (a: number, b: number): number => a + b
+export { generateSql } from './generator'
+export type { GenerateSqlOptions } from './generator'
