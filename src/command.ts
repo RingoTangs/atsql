@@ -6,6 +6,12 @@ import chalk from 'chalk'
 import { Command, InvalidArgumentError } from 'commander'
 
 import pkg from '../package.json' with { type: 'json' }
+import {
+  channelConfig,
+  channelCountErrorMessage,
+  channelCountRange,
+  isValidChannelCount,
+} from './config'
 import { generateSql } from './generator'
 
 interface WritableOutput {
@@ -20,12 +26,12 @@ interface CommandDependencies {
 
 const parseChannelCount = (value: string): number => {
   if (!/^\d+$/.test(value)) {
-    throw new InvalidArgumentError('must be an integer between 3 and 10')
+    throw new InvalidArgumentError(channelCountErrorMessage)
   }
 
   const count = Number(value)
-  if (count < 3 || count > 10) {
-    throw new InvalidArgumentError('must be an integer between 3 and 10')
+  if (!isValidChannelCount(count)) {
+    throw new InvalidArgumentError(channelCountErrorMessage)
   }
 
   return count
@@ -55,9 +61,9 @@ export const createProgram = (
     .requiredOption('-z, --zone <name>', 'zone name')
     .option(
       '-c, --channel-count <count>',
-      'number of channels (3-10)',
+      `number of channels (${channelCountRange})`,
       parseChannelCount,
-      3,
+      channelConfig.defaultCount,
     )
     .requiredOption('-o, --out <path>', 'output SQL file')
     .option('--force', 'overwrite an existing output file', false)

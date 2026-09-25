@@ -6,6 +6,7 @@ import iconv from 'iconv-lite'
 import { afterEach, describe, expect, it } from 'vitest'
 
 import { createProgram } from './command'
+import { channelCountErrorMessage, channelCountRange } from './config'
 
 const temporaryDirectories: string[] = []
 
@@ -118,6 +119,20 @@ describe('gen command', () => {
         'all.sql',
       ]),
     ).rejects.toThrow('process.exit unexpectedly called')
-    expect(errors).toContain('must be an integer between 3 and 10')
+    expect(errors).toContain(channelCountErrorMessage)
+  })
+
+  it('shows the configured channel range in command help', () => {
+    const program = createProgram({
+      stdout: silentOutput,
+      stderr: silentOutput,
+    })
+    const generateCommand = program.commands.find(
+      (command) => command.name() === 'gen',
+    )
+
+    expect(generateCommand?.helpInformation()).toContain(
+      `number of channels (${channelCountRange})`,
+    )
   })
 })

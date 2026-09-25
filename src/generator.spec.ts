@@ -4,6 +4,7 @@ import type { GenerateSqlOptions } from './generator'
 import iconv from 'iconv-lite'
 import { describe, expect, it } from 'vitest'
 
+import { channelConfig, channelCountErrorMessage } from './config'
 import { generateSql } from './generator'
 
 const decode = (content: Buffer): string => iconv.decode(content, 'gb18030')
@@ -20,7 +21,9 @@ describe('generateSql', () => {
     expect(sql).not.toContain(
       'CREATE DATABASE /*!32312 IF NOT EXISTS*/ `dl_ddb_1`',
     )
-    expect(sql.match(/^INSERT INTO `server`/gm)).toHaveLength(3)
+    expect(sql.match(/^INSERT INTO `server`/gm)).toHaveLength(
+      channelConfig.defaultCount,
+    )
     expect(sql).toContain("VALUES ('万里长城一线','','47.97.106.166',8160")
     expect(sql).toContain("VALUES ('万里长城二线','','47.97.106.166',8161")
     expect(sql).toContain("VALUES ('万里长城三线','','47.97.106.166',8162")
@@ -30,19 +33,25 @@ describe('generateSql', () => {
     expect(sql).not.toContain('atsql:use:')
   })
 
-  it('adds regular server rows for channels four through ten', async () => {
+  it('generates every configured channel up to the maximum', async () => {
     const sql = decode(
       await generateSql({
         ip: '47.97.106.166',
         zone: '万里长城',
-        channelCount: 5,
+        channelCount: channelConfig.maxCount,
       }),
     )
 
-    expect(sql.match(/^INSERT INTO `server`/gm)).toHaveLength(5)
+    expect(sql.match(/^INSERT INTO `server`/gm)).toHaveLength(
+      channelConfig.maxCount,
+    )
     expect(sql).toContain("VALUES ('万里长城四线','','47.97.106.166',8163")
-    expect(sql).toContain("VALUES ('万里长城五线','','47.97.106.166',8164")
-    expect(sql).toContain(",0,0,0,0,5,'','','',0,NULL);")
+    expect(sql).toContain(
+      `VALUES ('万里长城十线','','47.97.106.166',${channelConfig.basePort + channelConfig.maxCount - 1}`,
+    )
+    expect(sql).toContain(
+      `,0,0,0,0,${channelConfig.maxCount},'','','',0,NULL);`,
+    )
     expect(sql).not.toContain('万里长城四线:')
     expect(sql.match(/^INSERT INTO `config`/gm)).toHaveLength(39)
   })
@@ -57,12 +66,20 @@ describe('generateSql', () => {
       message: 'Zone must not be empty',
     },
     {
-      options: { ip: '47.97.106.166', zone: '万里长城', channelCount: 2 },
-      message: 'Channel count must be an integer between 3 and 10',
+      options: {
+        ip: '47.97.106.166',
+        zone: '万里长城',
+        channelCount: channelConfig.minCount - 1,
+      },
+      message: `Channel count ${channelCountErrorMessage}`,
     },
     {
-      options: { ip: '47.97.106.166', zone: '万里长城', channelCount: 11 },
-      message: 'Channel count must be an integer between 3 and 10',
+      options: {
+        ip: '47.97.106.166',
+        zone: '万里长城',
+        channelCount: channelConfig.maxCount + 1,
+      },
+      message: `Channel count ${channelCountErrorMessage}`,
     },
   ])('rejects invalid options: $message', async ({ options, message }) => {
     await expect(generateSql(options)).rejects.toThrow(message)

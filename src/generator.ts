@@ -5,30 +5,20 @@ import { isIPv4 } from 'node:net'
 
 import iconv from 'iconv-lite'
 
+import {
+  channelConfig,
+  channelCountErrorMessage,
+  isValidChannelCount,
+} from './config'
+
 export interface GenerateSqlOptions {
   ip: string
   zone: string
   channelCount?: number
 }
 
-const DEFAULT_CHANNEL_COUNT = 3
-const MIN_CHANNEL_COUNT = 3
-const MAX_CHANNEL_COUNT = 10
 const TEMPLATE_ENCODING = 'gb18030'
 const templateDirectory = new URL('../sqls/awaiting-use/', import.meta.url)
-
-const channelNumerals = [
-  '一',
-  '二',
-  '三',
-  '四',
-  '五',
-  '六',
-  '七',
-  '八',
-  '九',
-  '十',
-] as const
 
 const ipPlaceholders = [
   'AAA_DAILI_IP',
@@ -72,7 +62,7 @@ const validateOptions = (
   options: GenerateSqlOptions,
 ): Required<GenerateSqlOptions> => {
   const zone = options.zone.trim()
-  const channelCount = options.channelCount ?? DEFAULT_CHANNEL_COUNT
+  const channelCount = options.channelCount ?? channelConfig.defaultCount
 
   if (!isIPv4(options.ip)) {
     throw new TypeError(`Invalid IPv4 address: ${options.ip}`)
@@ -82,14 +72,8 @@ const validateOptions = (
     throw new TypeError('Zone must not be empty')
   }
 
-  if (
-    !Number.isInteger(channelCount) ||
-    channelCount < MIN_CHANNEL_COUNT ||
-    channelCount > MAX_CHANNEL_COUNT
-  ) {
-    throw new TypeError(
-      `Channel count must be an integer between ${MIN_CHANNEL_COUNT} and ${MAX_CHANNEL_COUNT}`,
-    )
+  if (!isValidChannelCount(channelCount)) {
+    throw new TypeError(`Channel count ${channelCountErrorMessage}`)
   }
 
   return { ip: options.ip, zone, channelCount }
@@ -161,7 +145,7 @@ const renderServerSegment = async (channelCount: number): Promise<string> => {
 
     return replaceAll(row, {
       CHANNEL_NAME: `{{CHANNEL_${channelId}_NAME}}`,
-      CHANNEL_PORT: String(8159 + channelId),
+      CHANNEL_PORT: String(channelConfig.basePort + index),
       CHANNEL_ID: String(channelId),
     })
   }).join('\n')
@@ -195,7 +179,7 @@ export const generateSql = async (
 
   for (let index = 0; index < options.channelCount; index += 1) {
     replacements[`CHANNEL_${index + 1}_NAME`] = escapeSqlString(
-      `${options.zone}${channelNumerals[index]}线`,
+      `${options.zone}${channelConfig.numerals[index]}线`,
     )
   }
 
