@@ -647,7 +647,7 @@ LOCK TABLES `ccs` WRITE;
 /*!40000 ALTER TABLE `ccs` DISABLE KEYS */;
 INSERT INTO `ccs` (`ccs`, `ip`, `port`, `dist`, `id`, `server_key`, `memo`) VALUES ('','',0,'',0,'',NULL);
 INSERT INTO `ccs` (`ccs`, `ip`, `port`, `dist`, `id`, `server_key`, `memo`) VALUES ('ccs_coding','10.2.50.30',8100,'coding',1,'',NULL);
-INSERT INTO `ccs` (`ccs`, `ip`, `port`, `dist`, `id`, `server_key`, `memo`) VALUES ('ccs_daili','118.24.7.124',8110,'问道一区',1,'',NULL);
+INSERT INTO `ccs` (`ccs`, `ip`, `port`, `dist`, `id`, `server_key`, `memo`) VALUES ('ccs_daili','{{CCS_DAILI_IP}}',8110,'问道一区',1,'',NULL);
 INSERT INTO `ccs` (`ccs`, `ip`, `port`, `dist`, `id`, `server_key`, `memo`) VALUES ('ccs_dongsh','10.3.4.35',8100,'dongsh',1,'',NULL);
 INSERT INTO `ccs` (`ccs`, `ip`, `port`, `dist`, `id`, `server_key`, `memo`) VALUES ('ccs_jiangw_30','10.2.50.30',8010,'jiangw_30',1,'',NULL);
 INSERT INTO `ccs` (`ccs`, `ip`, `port`, `dist`, `id`, `server_key`, `memo`) VALUES ('ccs_jiangw_pk','10.2.50.30',8012,'pk',1,'',NULL);
