@@ -11,6 +11,17 @@ const channelNumerals = [
   '十',
 ] as const
 
+export const databaseTemplateNames = [
+  'dl_adb_all.sql',
+  'dl_ddb_1.sql',
+  'dl_dmdb_1.sql',
+  'dl_ldb_1.sql',
+  'dl_ldb_all.sql',
+  'dl_mdb_1.sql',
+  'dl_mdb_all.sql',
+  'dl_tdb_1.sql',
+] as const
+
 export const channelConfig = {
   defaultCount: 3,
   minCount: 3,

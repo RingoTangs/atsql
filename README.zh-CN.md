@@ -1,6 +1,6 @@
 # atsql
 
-根据 `sqls/awaiting-use` 中的模板生成配置完成的 `dl_adb_all.sql` 数据库初始化脚本。
+根据 `sqls/awaiting-use` 中的模板生成完整的问道数据库初始化脚本。
 
 [English](./README.md) | 简体中文
 
@@ -34,8 +34,11 @@ atsql gen -i 47.97.106.166 -z 万里长城 -c 5 -o ./all.sql
 `--ip`、`--zone` 和 `--out` 为必填参数。`--channel-count` 默认值为 `3`，允许范围为
 `3–10`。默认拒绝覆盖已有输出文件，需要覆盖时使用 `--force`。
 
-输出文件使用 GB18030 编码。目前只包含处理后的 `dl_adb_all.sql`，不会合并其他 SQL
-文件。
+输出文件使用 GB18030 编码，依次包含配置完成的 `dl_adb_all.sql` 和其余 7 个建表
+dump。合并结果只使用一套全局 mysqldump 会话头尾，各数据库正文中的 MySQL 专属语句
+保持不变。
+
+`--channel-count` 只控制 `dl_adb_all` 中写入的线路配置，不会复制以 `_1` 结尾的数据库。
 
 > [!WARNING]
 > 生成结果会保留模板中的 `DROP DATABASE` 和 `DROP TABLE` 语句，导入 MySQL 前请先检查。
@@ -52,7 +55,7 @@ const sql = await generateSql({
 })
 ```
 
-`generateSql` 返回包含 GB18030 编码 SQL 的 `Buffer`。
+`generateSql` 返回包含完整 GB18030 编码 SQL 的 `Buffer`。
 
 ## 开发命令
 

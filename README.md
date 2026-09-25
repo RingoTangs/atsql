@@ -1,7 +1,7 @@
 # atsql
 
-Generate a configured `dl_adb_all.sql` initialization script from the templates
-in `sqls/awaiting-use`.
+Generate a complete AskTao database initialization script from the templates in
+`sqls/awaiting-use`.
 
 简体中文说明见 [README.zh-CN.md](./README.zh-CN.md)。
 
@@ -36,8 +36,13 @@ atsql gen -i 47.97.106.166 -z 万里长城 -c 5 -o ./all.sql
 and accepts values from `3` through `10`. Existing output files are rejected by
 default; pass `--force` to overwrite one.
 
-The output is GB18030 encoded. It currently contains only the processed
-`dl_adb_all.sql`; the other SQL files are not merged.
+The output is GB18030 encoded. It contains the configured `dl_adb_all.sql`
+followed by the seven schema dumps in their template order. The generated file
+uses one shared mysqldump session header and footer; each database body keeps its
+original MySQL-specific statements.
+
+`--channel-count` only controls the channel configuration written to
+`dl_adb_all`; database names ending in `_1` are not duplicated.
 
 > [!WARNING]
 > The generated SQL retains the template's `DROP DATABASE` and `DROP TABLE`
@@ -55,7 +60,7 @@ const sql = await generateSql({
 })
 ```
 
-`generateSql` returns a `Buffer` containing GB18030-encoded SQL.
+`generateSql` returns a `Buffer` containing the complete GB18030-encoded SQL.
 
 ## Development
 

@@ -4,7 +4,11 @@ import path from 'node:path'
 import iconv from 'iconv-lite'
 import { afterEach, describe, expect, it } from 'vitest'
 import { createProgram } from './command'
-import { channelCountErrorMessage, channelCountRange } from './config'
+import {
+  channelCountErrorMessage,
+  channelCountRange,
+  databaseTemplateNames,
+} from './config'
 
 const temporaryDirectories: string[] = []
 
@@ -52,6 +56,9 @@ describe('gen command', () => {
       'gb18030',
     )
     expect(output.match(/^INSERT INTO `server`/gm)).toHaveLength(5)
+    expect(output.match(/^CREATE DATABASE /gm)).toHaveLength(
+      databaseTemplateNames.length,
+    )
   })
 
   it('refuses an existing file unless --force is provided', async () => {

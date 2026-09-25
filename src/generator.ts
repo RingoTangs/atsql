@@ -1,10 +1,11 @@
-import type { Buffer } from 'node:buffer'
+import { Buffer } from 'node:buffer'
 import { readFile } from 'node:fs/promises'
 import { isIPv4 } from 'node:net'
 import iconv from 'iconv-lite'
 import {
   channelConfig,
   channelCountErrorMessage,
+  databaseTemplateNames,
   isValidChannelCount,
 } from './config'
 
@@ -16,6 +17,18 @@ export interface GenerateSqlOptions {
 
 const TEMPLATE_ENCODING = 'gb18030'
 const templateDirectory = new URL('../sqls/awaiting-use/', import.meta.url)
+const dumpHeaderEndMarker = Buffer.from(
+  '/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;',
+)
+const dumpFooterStartMarker = Buffer.from(
+  '/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;',
+)
+
+interface DumpSections {
+  header: Buffer
+  body: Buffer
+  footer: Buffer
+}
 
 const ipPlaceholders = [
   'AAA_DAILI_IP',
@@ -26,13 +39,59 @@ const ipPlaceholders = [
   'CHANNEL_IP',
 ] as const
 
-const readTemplate = async (name: string): Promise<string> => {
-  const content = await readFile(new URL(name, templateDirectory))
-  return iconv.decode(content, TEMPLATE_ENCODING)
-}
+const readTemplateBuffer = (name: string): Promise<Buffer> =>
+  readFile(new URL(name, templateDirectory))
+
+const readTemplate = async (name: string): Promise<string> =>
+  iconv.decode(await readTemplateBuffer(name), TEMPLATE_ENCODING)
 
 const countOccurrences = (content: string, value: string): number =>
   content.split(value).length - 1
+
+const findSingleMarker = (
+  content: Buffer,
+  marker: Buffer,
+  markerName: string,
+  templateName: string,
+): number => {
+  const index = content.indexOf(marker)
+
+  if (index === -1 || content.includes(marker, index + marker.length)) {
+    throw new Error(
+      `${templateName} must contain exactly one ${markerName} marker`,
+    )
+  }
+
+  return index
+}
+
+const splitDump = (content: Buffer, templateName: string): DumpSections => {
+  const headerMarkerIndex = findSingleMarker(
+    content,
+    dumpHeaderEndMarker,
+    'mysqldump header end',
+    templateName,
+  )
+  const footerStartIndex = findSingleMarker(
+    content,
+    dumpFooterStartMarker,
+    'mysqldump footer start',
+    templateName,
+  )
+  const headerLineEnd = content.indexOf(0x0a, headerMarkerIndex)
+
+  if (headerLineEnd === -1 || headerLineEnd >= footerStartIndex) {
+    throw new Error(`${templateName} has invalid mysqldump section boundaries`)
+  }
+
+  const bodyStartIndex = headerLineEnd + 1
+
+  return {
+    header: content.subarray(0, bodyStartIndex),
+    body: content.subarray(bodyStartIndex, footerStartIndex),
+    footer: content.subarray(footerStartIndex),
+  }
+}
 
 const replaceAll = (
   content: string,
@@ -137,12 +196,11 @@ const renderServerSegment = async (channelCount: number): Promise<string> => {
   }).join('\n')
 }
 
-export const generateSql = async (
-  rawOptions: GenerateSqlOptions,
+const renderAdbDump = async (
+  options: Required<GenerateSqlOptions>,
 ): Promise<Buffer> => {
-  const options = validateOptions(rawOptions)
   const [baseTemplate, configSegment, serverSegment] = await Promise.all([
-    readTemplate('dl_adb_all.sql'),
+    readTemplate(databaseTemplateNames[0]),
     readTemplate('segment_config.sql'),
     renderServerSegment(options.channelCount),
   ])
@@ -183,4 +241,25 @@ export const generateSql = async (
   if (!sql.endsWith('\n')) sql += '\n'
 
   return iconv.encode(sql, TEMPLATE_ENCODING)
+}
+
+export const generateSql = async (
+  rawOptions: GenerateSqlOptions,
+): Promise<Buffer> => {
+  const options = validateOptions(rawOptions)
+  const dumps = await Promise.all([
+    renderAdbDump(options),
+    ...databaseTemplateNames
+      .slice(1)
+      .map((templateName) => readTemplateBuffer(templateName)),
+  ])
+  const sections = dumps.map((dump, index) =>
+    splitDump(dump, databaseTemplateNames[index]),
+  )
+
+  return Buffer.concat([
+    sections[0].header,
+    ...sections.map((section) => section.body),
+    sections[0].footer,
+  ])
 }

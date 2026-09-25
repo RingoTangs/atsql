@@ -8,6 +8,7 @@ import {
   channelConfig,
   channelCountErrorMessage,
   channelCountRange,
+  databaseTemplateNames,
   isValidChannelCount,
 } from './config'
 import { generateSql } from './generator'
@@ -43,7 +44,7 @@ export const createProgram = (
 
   program
     .name('atsql')
-    .description('Generate a configured ADB initialization SQL file')
+    .description('Generate a complete AskTao database initialization SQL file')
     .version(pkg.version)
     .configureOutput({
       writeOut: (message) => stdout.write(message),
@@ -52,7 +53,7 @@ export const createProgram = (
 
   program
     .command('gen')
-    .description('Generate sqls/awaiting-use/dl_adb_all.sql')
+    .description('Generate the configured SQL database set')
     .requiredOption('-i, --ip <ipv4>', 'server IPv4 address')
     .requiredOption('-z, --zone <name>', 'zone name')
     .option(
@@ -95,7 +96,7 @@ export const createProgram = (
         }
 
         terminal.success(
-          `${outputPath} (${options.channelCount} channels, GB18030)`,
+          `${outputPath} (${options.channelCount} channels, ${databaseTemplateNames.length} databases, GB18030)`,
         )
         terminal.warning(
           'the generated SQL contains DROP DATABASE and DROP TABLE statements.',
