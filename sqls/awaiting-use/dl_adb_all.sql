@@ -23,6 +23,15 @@
 
 -- wait for replace ip: 118.24.7.124
 
+--- variable description
+--- 1. AAA_DAILI_IP: aaa server ip
+--- 2. CCS_DAILI_IP: ccs server ip
+--- 3. CSA_DAILI_IP: csa server ip
+--- 4. DBA_DAILI_IP: dba server ip
+--- 5. FALLBACK_IP: unknown server ip, but need to config
+--- 6. ZONE: 大区名称. 比如：万里长城
+--- 7. CHANNEL_IP: 频道名称. 比如：万里长城一线
+
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `dl_adb_all` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `dl_adb_all`;
