@@ -59,7 +59,7 @@
     }
   },
   "scripts": {
-    "dev": "tsdown",
+    "dev": "tsdown --watch",
     "build": "cross-env NODE_ENV=production tsdown",
     "test": "vitest",
     "test:run": "vitest run",
