@@ -17,7 +17,7 @@ export default defineConfig({
   },
   clean: true,
   dts: true,
-  format: ['cjs', 'esm'],
+  format: ['esm'],
   banner: `/*! ${pkg.name} v${pkg.version} */`,
   minify: isProd,
   shims: true,
