@@ -1154,7 +1154,7 @@ CREATE TABLE `csa` (
 
 LOCK TABLES `csa` WRITE;
 /*!40000 ALTER TABLE `csa` DISABLE KEYS */;
-INSERT INTO `csa` (`csa`, `ip`, `port`, `id`, `cs_dist`, `http_ip`, `http_port`, `http_plat`, `httpd_enable`, `memo`) VALUES ('csa_daili','118.24.7.124','6101',7,'问道一区','',0,'',0,'');
+INSERT INTO `csa` (`csa`, `ip`, `port`, `id`, `cs_dist`, `http_ip`, `http_port`, `http_plat`, `httpd_enable`, `memo`) VALUES ('csa_daili','{{CSA_DAILI_IP}}','6101',7,'问道一区','',0,'',0,'');
 INSERT INTO `csa` (`csa`, `ip`, `port`, `id`, `cs_dist`, `http_ip`, `http_port`, `http_plat`, `httpd_enable`, `memo`) VALUES ('csa_dongsh','10.3.4.35','6001',3,'csa_dongsh','',0,'',0,'');
 INSERT INTO `csa` (`csa`, `ip`, `port`, `id`, `cs_dist`, `http_ip`, `http_port`, `http_plat`, `httpd_enable`, `memo`) VALUES ('csa_hongjs','10.3.4.4','9051',2,'csa_hongjs','',0,'',0,'');
 INSERT INTO `csa` (`csa`, `ip`, `port`, `id`, `cs_dist`, `http_ip`, `http_port`, `http_plat`, `httpd_enable`, `memo`) VALUES ('csa_luoyh','10.3.4.25','6001',9,'csa_luoyh','',0,'',0,'');
