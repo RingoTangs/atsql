@@ -2757,25 +2757,27 @@ CREATE TABLE `stat` (
 
 LOCK TABLES `stat` WRITE;
 /*!40000 ALTER TABLE `stat` DISABLE KEYS */;
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (1,'20180305180939','','一线','0.838','','300','','0','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (2,'20180305181439','','一线','0.8003','','300','','0','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (3,'20180305181939','','一线','0.8183','','300','','0','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (4,'20180305182439','','一线','0.8270','','300','','0','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (5,'20180305182939','','一线','0.7993','','300','','0','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (6,'20180305183439','','一线','0.9636','','300','','0','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (7,'20180305183939','','一线','0.7413','','301','','0','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (8,'20180305184439','','一线','0.7703','','300','','0','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (9,'20180305184939','','一线','0.7839','','300','','0','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (10,'20180305185439','','一线','0.8196','','300','','0','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (11,'20180305185939','','一线','0.7390','','300','','0','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (12,'20180305190439','','一线','0.9390','','301','','0','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (13,'20180305190939','','一线','0.7820','','301','','0','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (14,'20180305191439','','一线','0.8433','','301','','0','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (15,'20180305191939','','一线','0.8676','','301','','0','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (16,'20180413153616','','一线','0.6460','','300','','0','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (17,'20180413155810','','一线','0.6476','','300','','2','0','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (18,'20180413160310','','一线','0.7343','','300','','2','1','0','');
-INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (19,'20180413160810','','一线','0.7279','','300','','2','0','0','');
+-- wait for delete start
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (1,'20180305180939','','一线','0.838','','300','','0','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (2,'20180305181439','','一线','0.8003','','300','','0','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (3,'20180305181939','','一线','0.8183','','300','','0','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (4,'20180305182439','','一线','0.8270','','300','','0','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (5,'20180305182939','','一线','0.7993','','300','','0','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (6,'20180305183439','','一线','0.9636','','300','','0','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (7,'20180305183939','','一线','0.7413','','301','','0','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (8,'20180305184439','','一线','0.7703','','300','','0','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (9,'20180305184939','','一线','0.7839','','300','','0','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (10,'20180305185439','','一线','0.8196','','300','','0','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (11,'20180305185939','','一线','0.7390','','300','','0','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (12,'20180305190439','','一线','0.9390','','301','','0','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (13,'20180305190939','','一线','0.7820','','301','','0','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (14,'20180305191439','','一线','0.8433','','301','','0','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (15,'20180305191939','','一线','0.8676','','301','','0','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (16,'20180413153616','','一线','0.6460','','300','','0','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (17,'20180413155810','','一线','0.6476','','300','','2','0','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (18,'20180413160310','','一线','0.7343','','300','','2','1','0','');
+-- INSERT INTO `stat` (`id`, `update_time`, `pid`, `server`, `cpu`, `vmem`, `rmem`, `cpu2`, `para1`, `para2`, `para3`, `memo`) VALUES (19,'20180413160810','','一线','0.7279','','300','','2','0','0','');
+-- wait for delete start
 /*!40000 ALTER TABLE `stat` ENABLE KEYS */;
 UNLOCK TABLES;
 
