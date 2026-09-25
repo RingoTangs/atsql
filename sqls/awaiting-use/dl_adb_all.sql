@@ -32,6 +32,8 @@
 -- 6. ZONE: 大区名称. 比如：万里长城
 -- 7. CHANNEL_IP: 频道服务器IP. 比如：万里长城一线，该频道服务器的 IP
 
+-- IP 正则匹配：\{\{\w+_IP\}\}
+
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `dl_adb_all` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `dl_adb_all`;
