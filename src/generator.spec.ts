@@ -1,9 +1,7 @@
 import type { Buffer } from 'node:buffer'
 import type { GenerateSqlOptions } from './generator'
-
 import iconv from 'iconv-lite'
 import { describe, expect, it } from 'vitest'
-
 import { channelConfig, channelCountErrorMessage } from './config'
 import { generateSql, replaceSegment } from './generator'
 

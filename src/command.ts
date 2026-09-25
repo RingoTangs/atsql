@@ -1,11 +1,8 @@
 import type { WritableOutput } from './terminal'
-
 import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
-
 import { Command, InvalidArgumentError } from 'commander'
-
 import pkg from '../package.json' with { type: 'json' }
 import {
   channelConfig,

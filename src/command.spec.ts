@@ -1,10 +1,8 @@
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
-
 import iconv from 'iconv-lite'
 import { afterEach, describe, expect, it } from 'vitest'
-
 import { createProgram } from './command'
 import { channelCountErrorMessage, channelCountRange } from './config'
 

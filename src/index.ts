@@ -1,2 +1,1 @@
-export { generateSql } from './generator'
-export type { GenerateSqlOptions } from './generator'
+export { generateSql, type GenerateSqlOptions } from './generator'

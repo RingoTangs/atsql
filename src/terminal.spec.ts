@@ -1,5 +1,4 @@
 import { describe, expect, it } from 'vitest'
-
 import { createTerminal } from './terminal'
 
 interface CapturedOutput {

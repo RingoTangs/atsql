@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import process from 'node:process'
-
 import { createProgram } from './command'
 import { createTerminal } from './terminal'
 
