@@ -378,26 +378,6 @@ CREATE TABLE `citywar_info` (
 
 LOCK TABLES `citywar_info` WRITE;
 /*!40000 ALTER TABLE `citywar_info` DISABLE KEYS */;
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','临江','','牡丹花城,蜀南竹海','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','廉州','','','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','兴化','','喜羊羊,无双倾城','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','饶州','','群星聚会,奇门遁甲,黄埔风云','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','韶州','','混沌初开,2013','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','汀州','','','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','严州','','2015,月满西楼','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','岳州','','','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','郧阳','','福星高照,千里婵娟','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','袁州','','武当雄风,林海雪原','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','南安','','橘子洲头,星罗棋布','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','宝庆','','','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','承天','','','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','辰州','','黄鹤楼,霸者无双','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','处州','','','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','德安','','','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','广信','','避暑山庄,2014','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','衡州','','雪战到底,卢沟晓月','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','建宁','','2012,勇者无惧','','','');
-INSERT INTO `citywar_info` (`update_time`, `start_time`, `end_time`, `city_name`, `defense_dist`, `attack_dist`, `para1`, `para2`, `memo`) VALUES ('20180413154753','20180418210000','20180418230000','建昌','','乐山大佛,忆江南','','','');
 /*!40000 ALTER TABLE `citywar_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
