@@ -21,8 +21,8 @@
 
 /*!40000 DROP DATABASE IF EXISTS `dl_ddb_1`*/;
 
---- variable description
---- ZONE: 大区名称. 比如：万里长城
+-- variable description
+-- ZONE: 大区名称. 比如：万里长城
 
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `dl_ddb_1` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
