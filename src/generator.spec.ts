@@ -5,7 +5,7 @@ import iconv from 'iconv-lite'
 import { describe, expect, it } from 'vitest'
 
 import { channelConfig, channelCountErrorMessage } from './config'
-import { generateSql } from './generator'
+import { generateSql, replaceSegment } from './generator'
 
 const decode = (content: Buffer): string => iconv.decode(content, 'gb18030')
 
@@ -83,5 +83,26 @@ describe('generateSql', () => {
     },
   ])('rejects invalid options: $message', async ({ options, message }) => {
     await expect(generateSql(options)).rejects.toThrow(message)
+  })
+})
+
+describe('replaceSegment', () => {
+  it('replaces exactly one template marker', () => {
+    expect(
+      replaceSegment(
+        'before\n-- atsql:use:segment_config\nafter',
+        'segment_config',
+        'INSERT INTO `config` VALUES ();\n',
+      ),
+    ).toBe('before\nINSERT INTO `config` VALUES ();\nafter')
+  })
+
+  it.each([
+    ['a template without the marker'],
+    ['-- atsql:use:segment_config\n-- atsql:use:segment_config'],
+  ])('rejects a missing or duplicated marker', (template) => {
+    expect(() =>
+      replaceSegment(template, 'segment_config', 'INSERT INTO `config`;'),
+    ).toThrow('Expected exactly one -- atsql:use:segment_config marker')
   })
 })

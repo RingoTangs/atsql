@@ -79,9 +79,8 @@ const validateOptions = (
   return { ip: options.ip, zone, channelCount }
 }
 
-const replaceSegment = (
+export const replaceSegment = (
   content: string,
-  table: 'config' | 'server',
   segmentName: 'segment_config' | 'segment_server',
   renderedSegment: string,
 ): string => {
@@ -91,17 +90,7 @@ const replaceSegment = (
     throw new Error(`Expected exactly one ${marker} marker`)
   }
 
-  const tableIdentifier = `\`${table}\``
-  const commentedRowsAndMarker = new RegExp(
-    `(?:^-- INSERT INTO ${tableIdentifier}[^\\r\\n]*(?:\\r?\\n|$))+^${marker}$`,
-    'm',
-  )
-
-  if (!commentedRowsAndMarker.test(content)) {
-    throw new Error(`Could not locate the ${table} template block`)
-  }
-
-  return content.replace(commentedRowsAndMarker, renderedSegment.trimEnd())
+  return content.replace(marker, renderedSegment.trimEnd())
 }
 
 const renderServerSegment = async (channelCount: number): Promise<string> => {
@@ -161,13 +150,8 @@ export const generateSql = async (
     renderServerSegment(options.channelCount),
   ])
 
-  let sql = replaceSegment(
-    baseTemplate,
-    'config',
-    'segment_config',
-    configSegment,
-  )
-  sql = replaceSegment(sql, 'server', 'segment_server', serverSegment)
+  let sql = replaceSegment(baseTemplate, 'segment_config', configSegment)
+  sql = replaceSegment(sql, 'segment_server', serverSegment)
 
   const replacements: Record<string, string> = {
     ZONE: escapeSqlString(options.zone),
