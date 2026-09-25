@@ -1,4 +1,4 @@
-import type { WritableOutput } from './terminal'
+import type { TerminalColors, WritableOutput } from './terminal'
 import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
@@ -18,6 +18,7 @@ interface CommandDependencies {
   cwd?: string
   stdout?: WritableOutput
   stderr?: WritableOutput
+  colors?: TerminalColors
 }
 
 const parseChannelCount = (value: string): number => {
@@ -39,20 +40,37 @@ export const createProgram = (
   const cwd = dependencies.cwd ?? process.cwd()
   const stdout = dependencies.stdout ?? process.stdout
   const stderr = dependencies.stderr ?? process.stderr
-  const terminal = createTerminal({ stdout, stderr })
+  const terminal = createTerminal({
+    stdout,
+    stderr,
+    colors: dependencies.colors,
+  })
+  const helpConfiguration = {
+    styleTitle: terminal.format.title,
+    styleCommandText: terminal.format.command,
+    styleSubcommandText: terminal.format.command,
+    styleOptionText: terminal.format.option,
+    styleOptionTerm: terminal.format.optionTerm,
+    styleArgumentText: terminal.format.argument,
+  }
   const program = new Command()
 
   program
     .name('atsql')
     .description('Generate a complete AskTao database initialization SQL file')
     .version(pkg.version)
+    .configureHelp(helpConfiguration)
     .configureOutput({
       writeOut: (message) => stdout.write(message),
       writeErr: (message) => stderr.write(message),
+      outputError: (message, write) => write(terminal.format.error(message)),
+      getOutHasColors: () => terminal.hasColors.stdout,
+      getErrHasColors: () => terminal.hasColors.stderr,
     })
 
   program
     .command('gen')
+    .configureHelp(helpConfiguration)
     .description('Generate the configured SQL database set')
     .requiredOption('-i, --ip <ipv4>', 'server IPv4 address')
     .requiredOption('-z, --zone <name>', 'zone name')
