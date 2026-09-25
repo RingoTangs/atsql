@@ -1232,7 +1232,7 @@ INSERT INTO `cta` (`cta`, `privilege`, `ip`, `port`, `dist`, `access_adb_user`, 
 INSERT INTO `cta` (`cta`, `privilege`, `ip`, `port`, `dist`, `access_adb_user`, `access_adb_password`, `memo`) VALUES ('shuxx','*','10.3.4.12',0,'shuxx','shuxx','81DC9BDB52D04DC20036DBD8313ED055',NULL);
 INSERT INTO `cta` (`cta`, `privilege`, `ip`, `port`, `dist`, `access_adb_user`, `access_adb_password`, `memo`) VALUES ('xuj','*','10.3.102.191,10.3.102.62',0,'xuj','xuj','81DC9BDB52D04DC20036DBD8313ED055',NULL);
 INSERT INTO `cta` (`cta`, `privilege`, `ip`, `port`, `dist`, `access_adb_user`, `access_adb_password`, `memo`) VALUES ('yugq','*','10.3.4.26',0,'yugq','yugq','81DC9BDB52D04DC20036DBD8313ED055',NULL);
-INSERT INTO `cta` (`cta`, `privilege`, `ip`, `port`, `dist`, `access_adb_user`, `access_adb_password`, `memo`) VALUES ('普天同庆','*','118.24.7.124',0,'普天同庆','root','81DC9BDB52D04DC20036DBD8313ED055',NULL);
+INSERT INTO `cta` (`cta`, `privilege`, `ip`, `port`, `dist`, `access_adb_user`, `access_adb_password`, `memo`) VALUES ('普天同庆','*','{{FALLBACK_IP}}',0,'普天同庆','root','81DC9BDB52D04DC20036DBD8313ED055',NULL);
 /*!40000 ALTER TABLE `cta` ENABLE KEYS */;
 UNLOCK TABLES;
 
