@@ -31,6 +31,9 @@
 -- 5. FALLBACK_IP: unknown server ip, but need to config
 -- 6. ZONE: 大区名称. 比如：万里长城
 -- 7. CHANNEL_IP: 频道服务器IP. 比如：万里长城一线，该频道服务器的 IP
+-- 8. CHANNEL_ONE_NAME: 频道1的名字，比如：万里长城一线
+-- 9. CHANNEL_TWO_NAME: 频道1的名字，比如：万里长城二线
+-- 10. CHANNEL_THREE_NAME: 频道3的名字，比如：万里长城三线
 
 -- IP 正则匹配：\{\{\w+_IP\}\}
 
