@@ -40,5 +40,9 @@
   },
   "search.exclude": {
     "pnpm-lock.yaml": true
+  },
+  "[sql]": {
+    "files.encoding": "gb2312",
+    "files.autoGuessEncoding": false
   }
 }
