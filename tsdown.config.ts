@@ -6,7 +6,10 @@ import pkg from './package.json' with { type: 'json' }
 const isProd = process.env.NODE_ENV === 'production'
 
 export default defineConfig({
-  entry: './src/index.ts',
+  entry: {
+    cli: './src/cli.ts',
+    index: './src/index.ts',
+  },
   outDir: 'dist',
   tsconfig: './tsconfig.build.json',
   alias: {
@@ -17,4 +20,5 @@ export default defineConfig({
   format: ['cjs', 'esm'],
   banner: `/*! ${pkg.name} v${pkg.version} */`,
   minify: isProd,
+  shims: true,
 })
