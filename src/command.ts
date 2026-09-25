@@ -13,6 +13,16 @@ import {
 import { generateSql } from './generator'
 import { failure, success } from './output'
 
+interface WritableOutput {
+  write: (message: string) => unknown
+}
+
+interface CommandDependencies {
+  cwd?: string
+  stdout?: WritableOutput
+  stderr?: WritableOutput
+}
+
 const parseChannelCount = (value: string): number => {
   if (!/^\d+$/.test(value)) {
     throw new InvalidArgumentError(channelCountErrorMessage)
@@ -26,10 +36,12 @@ const parseChannelCount = (value: string): number => {
   return count
 }
 
-export const createProgram = (): Command => {
-  const cwd = process.cwd()
-  const stdout = process.stdout
-  const stderr = process.stderr
+export const createProgram = (
+  dependencies: CommandDependencies = {},
+): Command => {
+  const cwd = dependencies.cwd ?? process.cwd()
+  const stdout = dependencies.stdout ?? process.stdout
+  const stderr = dependencies.stderr ?? process.stderr
 
   const program = new Command()
 

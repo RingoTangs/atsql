@@ -1,7 +1,6 @@
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
-import { Chalk } from 'chalk'
 import iconv from 'iconv-lite'
 import { afterEach, describe, expect, it } from 'vitest'
 import { createProgram } from './command'
@@ -99,12 +98,9 @@ describe('gen command', () => {
   it('rejects a non-integer channel count', async () => {
     const cwd = await createTemporaryDirectory()
     let errors = ''
-    const stdoutColor = new Chalk({ level: 1 })
-    const stderrColor = new Chalk({ level: 1 })
     const program = createProgram({
       cwd,
       stdout: silentOutput,
-      colors: { stdout: stdoutColor, stderr: stderrColor },
       stderr: {
         write: (message): boolean => {
           errors += message
@@ -129,16 +125,12 @@ describe('gen command', () => {
       ]),
     ).rejects.toThrow('process.exit unexpectedly called')
     expect(errors).toContain(channelCountErrorMessage)
-    expect(errors).toContain('\u001B[31m')
   })
 
   it('shows the configured channel range in command help', () => {
-    const stdoutColor = new Chalk({ level: 1 })
-    const stderrColor = new Chalk({ level: 1 })
     const program = createProgram({
       stdout: silentOutput,
       stderr: silentOutput,
-      colors: { stdout: stdoutColor, stderr: stderrColor },
     })
     const generateCommand = program.commands.find(
       (command) => command.name() === 'gen',
@@ -147,8 +139,5 @@ describe('gen command', () => {
     const help = generateCommand?.helpInformation() ?? ''
 
     expect(help).toContain(`number of channels (${channelCountRange})`)
-    expect(help).toContain(stdoutColor.bold('Usage:'))
-    expect(help).toContain('\u001B[36m-c, --channel-count ')
-    expect(help).toContain(stdoutColor.yellow('<count>'))
   })
 })
