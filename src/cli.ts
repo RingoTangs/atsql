@@ -8,6 +8,6 @@ createProgram()
   .parseAsync(process.argv)
   .catch((error: unknown) => {
     const message = error instanceof Error ? error.message : String(error)
-    console.log(`${failure('Error:')} ${message}`)
+    process.stderr.write(`${failure('Error:')} ${message}\n`)
     process.exitCode = 1
   })
