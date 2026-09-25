@@ -11,12 +11,11 @@ import {
 import { generateSql, replaceSegment } from './generator'
 
 const decode = (content: Buffer): string => iconv.decode(content, 'gb18030')
+const testIp = '127.0.0.1'
 
 describe('generateSql', () => {
   it('generates every database in template order with three channels by default', async () => {
-    const sql = decode(
-      await generateSql({ ip: '47.97.106.166', zone: '万里长城' }),
-    )
+    const sql = decode(await generateSql({ ip: testIp, zone: '万里长城' }))
 
     const databaseNames = databaseTemplateNames.map((name) =>
       name.replace(/\.sql$/, ''),
@@ -33,9 +32,9 @@ describe('generateSql', () => {
     expect(sql.match(/^INSERT INTO `server`/gm)).toHaveLength(
       channelConfig.defaultCount,
     )
-    expect(sql).toContain("VALUES ('万里长城一线','','47.97.106.166',8160")
-    expect(sql).toContain("VALUES ('万里长城二线','','47.97.106.166',8161")
-    expect(sql).toContain("VALUES ('万里长城三线','','47.97.106.166',8162")
+    expect(sql).toContain(`VALUES ('万里长城一线','','${testIp}',8160`)
+    expect(sql).toContain(`VALUES ('万里长城二线','','${testIp}',8161`)
+    expect(sql).toContain(`VALUES ('万里长城三线','','${testIp}',8162`)
     expect(sql).toContain(",600,1,'apex1'")
     expect(sql).toContain("'128.24.7.124',8110")
     expect(sql).not.toMatch(/\{\{[A-Z0-9_]+\}\}/)
@@ -43,9 +42,7 @@ describe('generateSql', () => {
   })
 
   it('wraps all database bodies in one mysqldump session', async () => {
-    const sql = decode(
-      await generateSql({ ip: '47.97.106.166', zone: '万里长城' }),
-    )
+    const sql = decode(await generateSql({ ip: testIp, zone: '万里长城' }))
     const lockCount = sql.match(/^LOCK TABLES /gm)?.length ?? 0
     const unlockCount = sql.match(/^UNLOCK TABLES;/gm)?.length ?? 0
 
@@ -61,7 +58,7 @@ describe('generateSql', () => {
 
   it('preserves every schema dump body byte for byte', async () => {
     const sql = await generateSql({
-      ip: '47.97.106.166',
+      ip: testIp,
       zone: '万里长城',
     })
     const headerEndMarker = Buffer.from(
@@ -87,7 +84,7 @@ describe('generateSql', () => {
   it('generates every configured channel up to the maximum', async () => {
     const sql = decode(
       await generateSql({
-        ip: '47.97.106.166',
+        ip: testIp,
         zone: '万里长城',
         channelCount: channelConfig.maxCount,
       }),
@@ -96,9 +93,9 @@ describe('generateSql', () => {
     expect(sql.match(/^INSERT INTO `server`/gm)).toHaveLength(
       channelConfig.maxCount,
     )
-    expect(sql).toContain("VALUES ('万里长城四线','','47.97.106.166',8163")
+    expect(sql).toContain(`VALUES ('万里长城四线','','${testIp}',8163`)
     expect(sql).toContain(
-      `VALUES ('万里长城十线','','47.97.106.166',${channelConfig.basePort + channelConfig.maxCount - 1}`,
+      `VALUES ('万里长城十线','','${testIp}',${channelConfig.basePort + channelConfig.maxCount - 1}`,
     )
     expect(sql).toContain(
       `,0,0,0,0,${channelConfig.maxCount},'','','',0,NULL);`,
@@ -113,12 +110,12 @@ describe('generateSql', () => {
       message: 'Invalid IPv4 address',
     },
     {
-      options: { ip: '47.97.106.166', zone: '  ' },
+      options: { ip: testIp, zone: '  ' },
       message: 'Zone must not be empty',
     },
     {
       options: {
-        ip: '47.97.106.166',
+        ip: testIp,
         zone: '万里长城',
         channelCount: channelConfig.minCount - 1,
       },
@@ -126,7 +123,7 @@ describe('generateSql', () => {
     },
     {
       options: {
-        ip: '47.97.106.166',
+        ip: testIp,
         zone: '万里长城',
         channelCount: channelConfig.maxCount + 1,
       },

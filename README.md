@@ -14,7 +14,7 @@ Install it globally:
 ```bash
 npm install --global atsql
 atsql gen \
-  --ip 47.97.106.166 \
+  --ip 127.0.0.1 \
   --zone 万里长城 \
   --channel-count 5 \
   --out ./all.sql
@@ -23,13 +23,13 @@ atsql gen \
 You can also run it without a global installation:
 
 ```bash
-npx atsql gen -i 47.97.106.166 -z 万里长城 -c 5 -o ./all.sql
+npx atsql gen -i 127.0.0.1 -z 万里长城 -c 5 -o ./all.sql
 ```
 
 Short options work with the global command too:
 
 ```bash
-atsql gen -i 47.97.106.166 -z 万里长城 -c 5 -o ./all.sql
+atsql gen -i 127.0.0.1 -z 万里长城 -c 5 -o ./all.sql
 ```
 
 `--ip`, `--zone`, and `--out` are required. `--channel-count` defaults to `3`
@@ -54,7 +54,7 @@ original MySQL-specific statements.
 import { generateSql } from 'atsql'
 
 const sql = await generateSql({
-  ip: '47.97.106.166',
+  ip: '127.0.0.1',
   zone: '万里长城',
   channelCount: 5,
 })

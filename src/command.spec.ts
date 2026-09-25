@@ -11,6 +11,7 @@ import {
 } from './config'
 
 const temporaryDirectories: string[] = []
+const testIp = '127.0.0.1'
 
 afterEach(async () => {
   await Promise.all(
@@ -42,7 +43,7 @@ describe('gen command', () => {
       'atsql',
       'gen',
       '-i',
-      '47.97.106.166',
+      testIp,
       '-z',
       '万里长城',
       '-c',
@@ -71,7 +72,7 @@ describe('gen command', () => {
       'atsql',
       'gen',
       '--ip',
-      '47.97.106.166',
+      testIp,
       '--zone',
       '万里长城',
       '--out',
@@ -115,7 +116,7 @@ describe('gen command', () => {
         'atsql',
         'gen',
         '--ip',
-        '47.97.106.166',
+        testIp,
         '--zone',
         '万里长城',
         '--channel-count',

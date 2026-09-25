@@ -13,7 +13,7 @@ atsql 要求 Node.js `>=22.12.0`。
 ```bash
 npm install --global atsql
 atsql gen \
-  --ip 47.97.106.166 \
+  --ip 127.0.0.1 \
   --zone 万里长城 \
   --channel-count 5 \
   --out ./all.sql
@@ -22,13 +22,13 @@ atsql gen \
 也可以不全局安装，直接运行：
 
 ```bash
-npx atsql gen -i 47.97.106.166 -z 万里长城 -c 5 -o ./all.sql
+npx atsql gen -i 127.0.0.1 -z 万里长城 -c 5 -o ./all.sql
 ```
 
 全局命令也支持短参数：
 
 ```bash
-atsql gen -i 47.97.106.166 -z 万里长城 -c 5 -o ./all.sql
+atsql gen -i 127.0.0.1 -z 万里长城 -c 5 -o ./all.sql
 ```
 
 `--ip`、`--zone` 和 `--out` 为必填参数。`--channel-count` 默认值为 `3`，允许范围为
@@ -49,7 +49,7 @@ dump。合并结果只使用一套全局 mysqldump 会话头尾，各数据库�
 import { generateSql } from 'atsql'
 
 const sql = await generateSql({
-  ip: '47.97.106.166',
+  ip: '127.0.0.1',
   zone: '万里长城',
   channelCount: 5,
 })
