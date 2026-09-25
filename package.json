@@ -2,7 +2,6 @@
   "name": "atsql",
   "type": "module",
   "version": "0.1.1",
-  "private": true,
   "packageManager": "pnpm@10.24.0",
   "description": "Generate configured AskTao database initialization SQL.",
   "author": "RingoTangs",
@@ -29,9 +28,19 @@
     }
   },
   "types": "./dist/index.d.mts",
+  "bin": {
+    "atsql": "./dist/cli.mjs"
+  },
   "files": [
-    "dist"
+    "dist",
+    "sqls/awaiting-use/dl_adb_all.sql",
+    "sqls/awaiting-use/segment_config.sql",
+    "sqls/awaiting-use/segment_server.sql"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "engines": {
     "node": ">=22.12.0"
   },
@@ -54,7 +63,7 @@
     "typecheck": "tsc -b",
     "check": "pnpm lint && pnpm format && pnpm typecheck && pnpm test:run",
     "check:fix": "pnpm lint:fix && pnpm format:fix",
-    "pack:check": "npm pack --dry-run",
+    "pack:check": "node scripts/check-package.mjs",
     "prepublishOnly": "pnpm check && pnpm build && pnpm pack:check"
   },
   "dependencies": {
