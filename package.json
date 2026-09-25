@@ -66,6 +66,11 @@
     "pack:check": "npm pack --dry-run",
     "prepublishOnly": "pnpm check && pnpm build && pnpm pack:check"
   },
+  "dependencies": {
+    "chalk": "^6.0.0",
+    "commander": "^15.0.0",
+    "iconv-lite": "^0.7.3"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "8.3.0",
     "@prettier/plugin-xml": "^3.4.2",
