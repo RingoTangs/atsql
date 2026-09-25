@@ -277,7 +277,9 @@ CREATE TABLE `account_code` (
 
 LOCK TABLES `account_code` WRITE;
 /*!40000 ALTER TABLE `account_code` DISABLE KEYS */;
-INSERT INTO `account_code` (`id`, `account`, `password`, `account_code`, `update_time`, `create_time`) VALUES (1,'q7623731','123456789',0,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+-- wait for delete start
+-- INSERT INTO `account_code` (`id`, `account`, `password`, `account_code`, `update_time`, `create_time`) VALUES (1,'q7623731','123456789',0,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+-- wait for delete end
 /*!40000 ALTER TABLE `account_code` ENABLE KEYS */;
 UNLOCK TABLES;
 
