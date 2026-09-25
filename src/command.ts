@@ -1,4 +1,3 @@
-import type { TerminalColors, WritableOutput } from './terminal'
 import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
@@ -12,14 +11,7 @@ import {
   isValidChannelCount,
 } from './config'
 import { generateSql } from './generator'
-import { createTerminal } from './terminal'
-
-interface CommandDependencies {
-  cwd?: string
-  stdout?: WritableOutput
-  stderr?: WritableOutput
-  colors?: TerminalColors
-}
+import { failure, success } from './output'
 
 const parseChannelCount = (value: string): number => {
   if (!/^\d+$/.test(value)) {
@@ -34,17 +26,11 @@ const parseChannelCount = (value: string): number => {
   return count
 }
 
-export const createProgram = (
-  dependencies: CommandDependencies = {},
-): Command => {
-  const cwd = dependencies.cwd ?? process.cwd()
-  const stdout = dependencies.stdout ?? process.stdout
-  const stderr = dependencies.stderr ?? process.stderr
-  const terminal = createTerminal({
-    stdout,
-    stderr,
-    colors: dependencies.colors,
-  })
+export const createProgram = (): Command => {
+  const cwd = process.cwd()
+  const stdout = process.stdout
+  const stderr = process.stderr
+
   const program = new Command()
 
   program
@@ -53,7 +39,11 @@ export const createProgram = (
     .version(pkg.version)
     .configureOutput({
       writeOut: (message) => stdout.write(message),
-      writeErr: (message) => terminal.error(message),
+      writeErr: (message) => stderr.write(message),
+      outputError: (message, write) => {
+        const formatted = message.replace(/^error:/, failure('Error:'))
+        write(formatted)
+      },
     })
 
   program
@@ -100,8 +90,8 @@ export const createProgram = (
           throw error
         }
 
-        terminal.success(
-          `${outputPath} (${options.channelCount} channels, ${databaseTemplateNames.length} databases, GB18030)`,
+        stdout.write(
+          `${success('Generated:')} ${outputPath} (${options.channelCount} channels, ${databaseTemplateNames.length} databases, GB18030)`,
         )
       },
     )
