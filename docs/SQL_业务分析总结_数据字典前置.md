@@ -82,16 +82,16 @@
 
 ## 3. 8 个 SQL 文件的业务定位
 
-| 文件 | 业务定位 |
-|---|---|
-| `dl_adb_all.sql` | 账号、认证、充值、区服配置中心 |
-| `dl_ddb_1.sql` | 动态世界数据、活动状态、特殊资产数据 |
-| `dl_dmdb_1.sql` | 数据分析 / 数据挖掘库 |
-| `dl_ldb_1.sql` | 某一区服的游戏行为日志库 |
-| `dl_ldb_all.sql` | 全区日志汇总结构 |
-| `dl_mdb_1.sql` | 某一区服的角色、宠物、装备、帮派等镜像库 |
-| `dl_mdb_all.sql` | 全区镜像汇总结构 |
-| `dl_tdb_1.sql` | 交易 / 寄售 / 藏宝类平台数据库 |
+| 文件             | 业务定位                                 |
+| ---------------- | ---------------------------------------- |
+| `dl_adb_all.sql` | 账号、认证、充值、区服配置中心           |
+| `dl_ddb_1.sql`   | 动态世界数据、活动状态、特殊资产数据     |
+| `dl_dmdb_1.sql`  | 数据分析 / 数据挖掘库                    |
+| `dl_ldb_1.sql`   | 某一区服的游戏行为日志库                 |
+| `dl_ldb_all.sql` | 全区日志汇总结构                         |
+| `dl_mdb_1.sql`   | 某一区服的角色、宠物、装备、帮派等镜像库 |
+| `dl_mdb_all.sql` | 全区镜像汇总结构                         |
+| `dl_tdb_1.sql`   | 交易 / 寄售 / 藏宝类平台数据库           |
 
 从命名规律看：
 
@@ -100,7 +100,7 @@
 
 ---
 
-# 4. ADB：账号、认证、充值与全局配置
+## 4. ADB：账号、认证、充值与全局配置
 
 `dl_adb_all.sql` 可以理解为整个系统的：
 
@@ -108,31 +108,31 @@
 
 ---
 
-## 4.1 `account`
+### 4.1 `account`
 
 这是游戏账号主表。
 
 常见字段包括：
 
-| 字段 | 业务含义 |
-|---|---|
-| `account` | 登录账号 |
-| `password` | 密码或密码摘要 |
-| `blocked_time` | 封禁时间 |
-| `blocked_reason` | 封禁原因 |
-| `temp_blocked_time` | 临时封禁时间 |
-| `gold_coin` | 金币 / 元宝类货币 |
-| `silver_coin` | 银币类货币 |
-| `trade_coin` | 可交易货币 |
-| `name` | 实名姓名 |
-| `birthday` | 出生日期 |
-| `id_num` | 身份证号 |
-| `mobile` | 手机号 |
-| `email` | 邮箱 |
-| `adult` | 防沉迷 / 成年状态 |
-| `last_login_ip` | 最近登录 IP |
-| `reg_date` | 注册时间 |
-| `coin_password` | 财产 / 交易密码 |
+| 字段                | 业务含义          |
+| ------------------- | ----------------- |
+| `account`           | 登录账号          |
+| `password`          | 密码或密码摘要    |
+| `blocked_time`      | 封禁时间          |
+| `blocked_reason`    | 封禁原因          |
+| `temp_blocked_time` | 临时封禁时间      |
+| `gold_coin`         | 金币 / 元宝类货币 |
+| `silver_coin`       | 银币类货币        |
+| `trade_coin`        | 可交易货币        |
+| `name`              | 实名姓名          |
+| `birthday`          | 出生日期          |
+| `id_num`            | 身份证号          |
+| `mobile`            | 手机号            |
+| `email`             | 邮箱              |
+| `adult`             | 防沉迷 / 成年状态 |
+| `last_login_ip`     | 最近登录 IP       |
+| `reg_date`          | 注册时间          |
+| `coin_password`     | 财产 / 交易密码   |
 
 逻辑关系：
 
@@ -151,11 +151,11 @@ account
 
 ---
 
-## 4.2 `charge` / `charge_log`
+### 4.2 `charge` / `charge_log`
 
 这一组表属于充值体系。
 
-### `charge`
+#### `charge`
 
 更接近当前充值状态或计费状态。
 
@@ -176,7 +176,7 @@ card_bonus
 - 时长卡
 - 会员到期时间
 
-### `charge_log`
+#### `charge_log`
 
 更接近充值流水。
 
@@ -194,7 +194,7 @@ card_bonus
 
 ---
 
-## 4.3 `cost_log`
+### 4.3 `cost_log`
 
 这是玩家消费流水的重要表。
 
@@ -228,11 +228,11 @@ gold_coin_left
 
 ---
 
-## 4.4 `district` / `server`
+### 4.4 `district` / `server`
 
 这两个表描述游戏区服架构。
 
-### `district`
+#### `district`
 
 可理解为“大区”。
 
@@ -247,7 +247,7 @@ csa
 party_war_server
 ```
 
-### `server`
+#### `server`
 
 代表实际游戏服务器节点。
 
@@ -274,31 +274,31 @@ enable
 
 ---
 
-## 4.5 ADB 中其他业务模块
+### 4.5 ADB 中其他业务模块
 
 从表名可以识别出以下模块：
 
-| 表名 | 业务含义 |
-|---|---|
-| `antiaddiction` | 防沉迷 |
-| `phone_bind` | 手机绑定 |
-| `phone_auth` | 手机验证 |
-| `pwd_protect` | 密保 |
-| `safe_ctrl` | 账号安全控制 |
-| `ecard_*` | 充值卡 |
-| `alipay_account` | 支付宝账号 / 支付渠道 |
-| `coupon_info` | 优惠券 |
-| `gift_coin_log` | 赠送金币日志 |
-| `coin_red_packets_log` | 金币红包 |
-| `arena_account` | 竞技场资格 / 账号信息 |
-| `citywar_account` | 城战资格 |
-| `partywar_account` | 帮战资格 |
-| `league_account` | 联赛资格 |
-| `csw_account` | 跨服战相关账号 |
+| 表名                   | 业务含义              |
+| ---------------------- | --------------------- |
+| `antiaddiction`        | 防沉迷                |
+| `phone_bind`           | 手机绑定              |
+| `phone_auth`           | 手机验证              |
+| `pwd_protect`          | 密保                  |
+| `safe_ctrl`            | 账号安全控制          |
+| `ecard_*`              | 充值卡                |
+| `alipay_account`       | 支付宝账号 / 支付渠道 |
+| `coupon_info`          | 优惠券                |
+| `gift_coin_log`        | 赠送金币日志          |
+| `coin_red_packets_log` | 金币红包              |
+| `arena_account`        | 竞技场资格 / 账号信息 |
+| `citywar_account`      | 城战资格              |
+| `partywar_account`     | 帮战资格              |
+| `league_account`       | 联赛资格              |
+| `csw_account`          | 跨服战相关账号        |
 
 ---
 
-# 5. DDB：动态世界状态与通用对象持久化
+## 5. DDB：动态世界状态与通用对象持久化
 
 DDB 与传统关系型业务库不同。
 
@@ -308,7 +308,7 @@ DDB 与传统关系型业务库不同。
 
 ---
 
-## 5.1 `data`
+### 5.1 `data`
 
 其结构类似：
 
@@ -360,7 +360,7 @@ douchong_dahui
 
 ---
 
-## 5.2 `basic_char_info`
+### 5.2 `basic_char_info`
 
 这是角色基本信息索引。
 
@@ -382,7 +382,7 @@ gender
 
 ---
 
-## 5.3 `gid_info`
+### 5.3 `gid_info`
 
 这是全局 ID 注册或索引表。
 
@@ -403,7 +403,7 @@ name
 
 ---
 
-## 5.4 `item_deposit` / `pet_deposit`
+### 5.4 `item_deposit` / `pet_deposit`
 
 这一组表很像：
 
@@ -442,7 +442,7 @@ name
 
 ---
 
-## 5.5 `property_recall`
+### 5.5 `property_recall`
 
 该表很明显属于：
 
@@ -462,7 +462,7 @@ checksum
 
 ---
 
-## 5.6 `transfer_data`
+### 5.6 `transfer_data`
 
 更接近：
 
@@ -493,7 +493,7 @@ state
 
 ---
 
-# 6. MDB：角色、宠物、装备等当前快照
+## 6. MDB：角色、宠物、装备等当前快照
 
 MDB 是非常重要的：
 
@@ -503,7 +503,7 @@ MDB 是非常重要的：
 
 ---
 
-## 6.1 `char_info`
+### 6.1 `char_info`
 
 这是角色当前画像的核心表。
 
@@ -554,7 +554,7 @@ def
 
 ---
 
-## 6.2 `pet_info`
+### 6.2 `pet_info`
 
 宠物当前状态快照。
 
@@ -588,7 +588,7 @@ char_info.gid
 
 ---
 
-## 6.3 `item_info`
+### 6.3 `item_info`
 
 装备 / 物品当前状态快照。
 
@@ -619,9 +619,9 @@ perfect_degree
 
 ---
 
-## 6.4 帮派系统
+### 6.4 帮派系统
 
-### `party_basic_info`
+#### `party_basic_info`
 
 表示帮派主数据。
 
@@ -637,7 +637,7 @@ perfect_degree
 - 活跃度
 - 战绩
 
-### `party_members_info`
+#### `party_members_info`
 
 表示帮派成员明细。
 
@@ -650,13 +650,13 @@ perfect_degree
 
 ---
 
-## 6.5 排行榜
+### 6.5 排行榜
 
-### `top_char`
+#### `top_char`
 
 角色排行榜缓存。
 
-### `top_pet`
+#### `top_pet`
 
 宠物排行榜缓存。
 
@@ -676,7 +676,7 @@ val
 
 ---
 
-## 6.6 跨服竞技与联赛
+### 6.6 跨服竞技与联赛
 
 可识别的相关表：
 
@@ -702,7 +702,7 @@ csw_sign_info
 
 ---
 
-# 7. LDB：玩家行为日志与审计流水
+## 7. LDB：玩家行为日志与审计流水
 
 LDB 可以理解为：
 
@@ -712,7 +712,7 @@ LDB 可以理解为：
 
 ---
 
-## 7.1 `login_log`
+### 7.1 `login_log`
 
 记录玩家登录时的信息和状态。
 
@@ -745,7 +745,7 @@ IP
 
 ---
 
-## 7.2 `level_up_log`
+### 7.2 `level_up_log`
 
 角色升级日志。
 
@@ -758,7 +758,7 @@ IP
 
 ---
 
-## 7.3 `cost_coin_log`
+### 7.3 `cost_coin_log`
 
 游戏货币消费日志。
 
@@ -782,7 +782,7 @@ amount
 
 ---
 
-## 7.4 `item_transfer_log`
+### 7.4 `item_transfer_log`
 
 这是非常关键的：
 
@@ -817,7 +817,7 @@ transfer_id
 
 ---
 
-## 7.5 `pet_log`
+### 7.5 `pet_log`
 
 表示宠物生命周期日志。
 
@@ -833,7 +833,7 @@ transfer_id
 
 ---
 
-## 7.6 `task_log`
+### 7.6 `task_log`
 
 任务行为日志。
 
@@ -856,7 +856,7 @@ tao
 
 ---
 
-## 7.7 `combat_log`
+### 7.7 `combat_log`
 
 战斗日志。
 
@@ -886,30 +886,30 @@ abnormal_degree
 
 ---
 
-## 7.8 其他日志模块
+### 7.8 其他日志模块
 
-| 表名 | 业务含义 |
-|---|---|
-| `chat_log` | 聊天 |
-| `gm_log` | GM 操作 |
-| `equipment_log` | 装备操作 |
-| `sale_log` | 出售 |
-| `coin_order_log` | 游戏币订单 |
-| `anti_cheater_log` | 反作弊 |
-| `antiaddiction_log` | 防沉迷 |
-| `report_log` | 举报 |
-| `safe_log` | 安全操作 |
-| `plug_log` | 外挂相关 |
-| `task_log` | 任务 |
-| `combat_log` | 战斗 |
-| `pet_level_up_log` | 宠物升级 |
-| `csl_match_log` | 跨服赛事 |
+| 表名                     | 业务含义   |
+| ------------------------ | ---------- |
+| `chat_log`               | 聊天       |
+| `gm_log`                 | GM 操作    |
+| `equipment_log`          | 装备操作   |
+| `sale_log`               | 出售       |
+| `coin_order_log`         | 游戏币订单 |
+| `anti_cheater_log`       | 反作弊     |
+| `antiaddiction_log`      | 防沉迷     |
+| `report_log`             | 举报       |
+| `safe_log`               | 安全操作   |
+| `plug_log`               | 外挂相关   |
+| `task_log`               | 任务       |
+| `combat_log`             | 战斗       |
+| `pet_level_up_log`       | 宠物升级   |
+| `csl_match_log`          | 跨服赛事   |
 | `client_performance_log` | 客户端性能 |
-| `system_monitor_log` | 系统监控 |
+| `system_monitor_log`     | 系统监控   |
 
 ---
 
-# 8. DMDB：分析汇总与数据挖掘
+## 8. DMDB：分析汇总与数据挖掘
 
 DMDB 与 LDB 有大量同名表，但又额外存在分析类表。
 
@@ -927,7 +927,7 @@ DMDB 与 LDB 有大量同名表，但又额外存在分析类表。
 
 ---
 
-## 8.1 `account_basic`
+### 8.1 `account_basic`
 
 账号基础画像汇总。
 
@@ -940,7 +940,7 @@ DMDB 与 LDB 有大量同名表，但又额外存在分析类表。
 
 ---
 
-## 8.2 `char_basic`
+### 8.2 `char_basic`
 
 角色基础画像。
 
@@ -948,7 +948,7 @@ DMDB 与 LDB 有大量同名表，但又额外存在分析类表。
 
 ---
 
-## 8.3 `char_incre`
+### 8.3 `char_incre`
 
 角色增量统计。
 
@@ -980,7 +980,7 @@ party_contrib
 
 ---
 
-## 8.4 `char_cost`
+### 8.4 `char_cost`
 
 角色货币消耗。
 
@@ -994,7 +994,7 @@ gold_coin
 
 ---
 
-## 8.5 `coin_cost`
+### 8.5 `coin_cost`
 
 货币消耗明细 / 汇总。
 
@@ -1017,7 +1017,7 @@ account
 
 ---
 
-## 8.6 `charge_item_sale`
+### 8.6 `charge_item_sale`
 
 商城商品销售分析。
 
@@ -1037,7 +1037,7 @@ account
 
 ---
 
-## 8.7 玩法分析表
+### 8.7 玩法分析表
 
 例如：
 
@@ -1072,7 +1072,7 @@ times
 
 ---
 
-# 9. TDB：寄售、交易与藏宝类平台
+## 9. TDB：寄售、交易与藏宝类平台
 
 TDB 可以理解为：
 
@@ -1080,7 +1080,7 @@ TDB 可以理解为：
 
 ---
 
-## 9.1 `treasure_info`
+### 9.1 `treasure_info`
 
 寄售商品主表。
 
@@ -1112,7 +1112,7 @@ TDB 可以理解为：
 
 ---
 
-## 9.2 `trading_record`
+### 9.2 `trading_record`
 
 成交记录。
 
@@ -1135,7 +1135,7 @@ item_order_id
 
 ---
 
-## 9.3 `transaction_log`
+### 9.3 `transaction_log`
 
 交易平台调用外部系统的事务记录。
 
@@ -1163,21 +1163,21 @@ repeat_times
 
 ---
 
-# 10. 核心 ID 与业务键
+## 10. 核心 ID 与业务键
 
 后续写 SQL 时，必须先理解这些标识符。
 
-| 字段 | 含义 |
-|---|---|
-| `account` | 游戏登录账号 |
-| `gid` | 游戏角色全局 ID |
-| `dist` | 游戏大区 |
-| `server` | 实际游戏服务器 / 线路 |
-| `iid` | 资产实例 ID |
-| `item_iid` | 具体物品实例 ID |
-| `pet_iid` | 具体宠物实例 ID |
-| `order_id` | 订单 ID |
-| `transfer_id` | 转移事务 ID |
+| 字段          | 含义                  |
+| ------------- | --------------------- |
+| `account`     | 游戏登录账号          |
+| `gid`         | 游戏角色全局 ID       |
+| `dist`        | 游戏大区              |
+| `server`      | 实际游戏服务器 / 线路 |
+| `iid`         | 资产实例 ID           |
+| `item_iid`    | 具体物品实例 ID       |
+| `pet_iid`     | 具体宠物实例 ID       |
+| `order_id`    | 订单 ID               |
+| `transfer_id` | 转移事务 ID           |
 
 核心链路：
 
@@ -1207,7 +1207,7 @@ iid
 
 ---
 
-# 11. 典型玩家业务流程
+## 11. 典型玩家业务流程
 
 可以将玩家生命周期抽象为：
 
@@ -1272,9 +1272,9 @@ trading_record
 
 ---
 
-# 12. 数据库设计的几个明显特征
+## 12. 数据库设计的几个明显特征
 
-## 12.1 时间字段大量使用字符串
+### 12.1 时间字段大量使用字符串
 
 很多时间可能采用：
 
@@ -1299,7 +1299,7 @@ YYYYMMDDHHMMSS
 
 ---
 
-## 12.2 大量通用参数字段
+### 12.2 大量通用参数字段
 
 常见：
 
@@ -1325,7 +1325,7 @@ memo
 
 ---
 
-## 12.3 大量序列化文本
+### 12.3 大量序列化文本
 
 常见字段：
 
@@ -1345,7 +1345,7 @@ snapshot
 
 ---
 
-## 12.4 字符编码较老
+### 12.4 字符编码较老
 
 dump 中可以看到 `latin1` 声明，但业务数据中存在明显中文历史编码痕迹。
 
@@ -1360,7 +1360,7 @@ dump 中可以看到 `latin1` 声明，但业务数据中存在明显中文历�
 
 ---
 
-## 12.5 很少使用数据库外键
+### 12.5 很少使用数据库外键
 
 虽然业务表之间关系非常明显，但数据库层基本没有显式 Foreign Key。
 
@@ -1372,7 +1372,7 @@ dump 中可以看到 `latin1` 声明，但业务数据中存在明显中文历�
 
 ---
 
-# 13. 安全与敏感数据风险
+## 13. 安全与敏感数据风险
 
 这套备份中存在较多敏感信息。
 
@@ -1405,7 +1405,7 @@ IP          → 脱敏
 
 ---
 
-# 14. 最终业务总结
+## 14. 最终业务总结
 
 如果用一句话概括这套数据库：
 
