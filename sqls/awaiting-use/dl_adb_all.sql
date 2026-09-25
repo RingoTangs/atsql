@@ -21,6 +21,8 @@
 
 /*!40000 DROP DATABASE IF EXISTS `dl_adb_all`*/;
 
+-- wait for replace ip: 118.24.7.124
+
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `dl_adb_all` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `dl_adb_all`;
