@@ -1,0 +1,75 @@
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22.23.2
+          registry-url: https://registry.npmjs.org/
+          package-manager-cache: false
+
+      # npm Trusted Publishing requires npm >= 11.5.1
+      - name: Update npm
+        run: npm install --global npm@11
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Verify release version
+        shell: bash
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+
+          echo "package.json version: $VERSION"
+          echo "Git tag version:      $TAG_VERSION"
+
+          if [ "$VERSION" != "$TAG_VERSION" ]; then
+            echo "::error::Git tag v$TAG_VERSION does not match package.json version $VERSION"
+            exit 1
+          fi
+
+      - name: Determine npm dist-tag
+        id: dist-tag
+        shell: bash
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+
+          if [[ "$VERSION" == *"-alpha"* ]]; then
+            DIST_TAG="alpha"
+          elif [[ "$VERSION" == *"-beta"* ]]; then
+            DIST_TAG="beta"
+          elif [[ "$VERSION" == *"-rc"* ]]; then
+            DIST_TAG="rc"
+          else
+            DIST_TAG="latest"
+          fi
+
+          echo "tag=$DIST_TAG" >> "$GITHUB_OUTPUT"
+          echo "Publishing $VERSION with npm dist-tag: $DIST_TAG"
+
+      - name: Publish package
+        run: npm publish --access public --tag "${{ steps.dist-tag.outputs.tag }}"
