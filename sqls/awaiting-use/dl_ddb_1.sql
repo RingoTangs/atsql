@@ -2315,7 +2315,6 @@ INSERT INTO `data` (`path`, `name`, `branch`, `content`, `time`, `checksum`, `me
 INSERT INTO `data` (`path`, `name`, `branch`, `content`, `time`, `checksum`, `memo`) VALUES ('purchase_infos','7','一线','([])','20180305190007',-781961062,NULL);
 INSERT INTO `data` (`path`, `name`, `branch`, `content`, `time`, `checksum`, `memo`) VALUES ('purchase_infos','8','一线','([])','20180305190007',-782288743,NULL);
 INSERT INTO `data` (`path`, `name`, `branch`, `content`, `time`, `checksum`, `memo`) VALUES ('purchase_infos','9','一线','([])','20180305190007',-782878568,NULL);
-INSERT INTO `data` (`path`, `name`, `branch`, `content`, `time`, `checksum`, `memo`) VALUES ('runtime','stanwind','','([\"create_time\":\"2018-04-13-15:53:02\",\"active_char\":\"西风\",\"startup_id\":1523605680,\"game_server\":\"一线\",\"locked_gid\":\"0000000000000001\",\"time\":1523605982,])','20180413155302',-1546385499,NULL);
 INSERT INTO `data` (`path`, `name`, `branch`, `content`, `time`, `checksum`, `memo`) VALUES ('score_wishing','wishing_config','','([])','20180413154753',1694842499,NULL);
 INSERT INTO `data` (`path`, `name`, `branch`, `content`, `time`, `checksum`, `memo`) VALUES ('share_sort_d','sort_user','','([])','20180413150923',742275874,NULL);
 INSERT INTO `data` (`path`, `name`, `branch`, `content`, `time`, `checksum`, `memo`) VALUES ('shaxing','all_servers','','1','20180305180250',-467585783,NULL);
