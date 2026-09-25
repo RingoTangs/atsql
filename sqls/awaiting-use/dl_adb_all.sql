@@ -1265,7 +1265,7 @@ INSERT INTO `dba` (`dba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALU
 INSERT INTO `dba` (`dba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('dba_daili','{{DBA_DAILI_IP}}',8120,'问道一区','',1,NULL);
 INSERT INTO `dba` (`dba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('dba_dongsh','10.3.4.35',8200,'dongsh','',1,NULL);
 INSERT INTO `dba` (`dba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('dba_jiangw_30','10.2.50.30',8020,'jiangw_30','',1,NULL);
-INSERT INTO `dba` (`dba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('dba_jiangw_pk','118.24.7.124',8022,'pk','',2,NULL);
+INSERT INTO `dba` (`dba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('dba_jiangw_pk','{{FALLBACK_IP}}',8022,'pk','',2,NULL);
 INSERT INTO `dba` (`dba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('dba_liy','10.3.102.75',8020,'liy','',1,NULL);
 INSERT INTO `dba` (`dba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('dba_luoyh','10.3.4.25',8020,'luoyh','',1,NULL);
 INSERT INTO `dba` (`dba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('dba_quls_30','10.3.4.5',8200,'quls_30','',1,NULL);
@@ -1808,9 +1808,9 @@ CREATE TABLE `ldba` (
 
 LOCK TABLES `ldba` WRITE;
 /*!40000 ALTER TABLE `ldba` DISABLE KEYS */;
-INSERT INTO `ldba` (`ldba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('ldba_jiangw','118.24.7.124',8040,'内部测试','',2,NULL);
+INSERT INTO `ldba` (`ldba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('ldba_jiangw','{{FALLBACK_IP}}',8040,'内部测试','',2,NULL);
 INSERT INTO `ldba` (`ldba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('ldba_jiangw_30','10.2.50.30',8040,'jiangw_30','',2,NULL);
-INSERT INTO `ldba` (`ldba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('ldba_jiangw_pk','118.24.7.124',8050,'pk','',2,NULL);
+INSERT INTO `ldba` (`ldba`, `ip`, `port`, `dist`, `server_key`, `id`, `memo`) VALUES ('ldba_jiangw_pk','{{FALLBACK_IP}}',8050,'pk','',2,NULL);
 /*!40000 ALTER TABLE `ldba` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2467,9 +2467,9 @@ INSERT INTO `spa` (`spa`, `dist`, `server_key`, `ip`, `id`, `port`, `http_plat`,
 INSERT INTO `spa` (`spa`, `dist`, `server_key`, `ip`, `id`, `port`, `http_plat`, `http_ip`, `httpd_enable`, `httpd_port`, `memo`) VALUES ('p01_spa_shuxx','shuxx',NULL,'10.3.4.12',1,8009,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO `spa` (`spa`, `dist`, `server_key`, `ip`, `id`, `port`, `http_plat`, `http_ip`, `httpd_enable`, `httpd_port`, `memo`) VALUES ('spa_coding','coding',NULL,'10.2.50.30',1,8400,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO `spa` (`spa`, `dist`, `server_key`, `ip`, `id`, `port`, `http_plat`, `http_ip`, `httpd_enable`, `httpd_port`, `memo`) VALUES ('spa_dongsh','dongsh',NULL,'10.3.4.35',1,8400,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO `spa` (`spa`, `dist`, `server_key`, `ip`, `id`, `port`, `http_plat`, `http_ip`, `httpd_enable`, `httpd_port`, `memo`) VALUES ('spa_jiangw','普天同庆',NULL,'118.24.7.124',1,8030,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `spa` (`spa`, `dist`, `server_key`, `ip`, `id`, `port`, `http_plat`, `http_ip`, `httpd_enable`, `httpd_port`, `memo`) VALUES ('spa_jiangw','普天同庆',NULL,'{{FALLBACK_IP}}',1,8030,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO `spa` (`spa`, `dist`, `server_key`, `ip`, `id`, `port`, `http_plat`, `http_ip`, `httpd_enable`, `httpd_port`, `memo`) VALUES ('spa_jiangw_30','jiangw_30',NULL,'10.2.50.30',1,8030,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO `spa` (`spa`, `dist`, `server_key`, `ip`, `id`, `port`, `http_plat`, `http_ip`, `httpd_enable`, `httpd_port`, `memo`) VALUES ('spa_jiangw_pk','jiangw_pk',NULL,'118.24.7.124',2,8032,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `spa` (`spa`, `dist`, `server_key`, `ip`, `id`, `port`, `http_plat`, `http_ip`, `httpd_enable`, `httpd_port`, `memo`) VALUES ('spa_jiangw_pk','jiangw_pk',NULL,'{{FALLBACK_IP}}',2,8032,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO `spa` (`spa`, `dist`, `server_key`, `ip`, `id`, `port`, `http_plat`, `http_ip`, `httpd_enable`, `httpd_port`, `memo`) VALUES ('spa_luoyh','luoyh',NULL,'10.3.4.25',1,8030,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO `spa` (`spa`, `dist`, `server_key`, `ip`, `id`, `port`, `http_plat`, `http_ip`, `httpd_enable`, `httpd_port`, `memo`) VALUES ('spa_quls_30','quls_30',NULL,'10.3.4.5',1,8400,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO `spa` (`spa`, `dist`, `server_key`, `ip`, `id`, `port`, `http_plat`, `http_ip`, `httpd_enable`, `httpd_port`, `memo`) VALUES ('spa_test','test',NULL,'10.2.50.57',1,12076,NULL,NULL,NULL,NULL,NULL);
@@ -2626,7 +2626,7 @@ INSERT INTO `tts` (`tts`, `ip`, `port`, `id`, `dist`, `trading_url`, `web_status
 INSERT INTO `tts` (`tts`, `ip`, `port`, `id`, `dist`, `trading_url`, `web_status_url`, `http_ip`, `http_plat`, `httpd_enable`, `httpd_port`, `check_sum`) VALUES ('p01_tts_hongjs','10.3.4.4',8071,1,'hongjs','http://10.3.102.49','http://treasure.gyyx.com','*','1aó?',1,85,'');
 INSERT INTO `tts` (`tts`, `ip`, `port`, `id`, `dist`, `trading_url`, `web_status_url`, `http_ip`, `http_plat`, `httpd_enable`, `httpd_port`, `check_sum`) VALUES ('p01_tts_yeyh2','10.3.102.24',8600,1,'yeyh2','http://10.3.102.49','http://treasure.gyyx.com','*','1aó?',1,85,'');
 INSERT INTO `tts` (`tts`, `ip`, `port`, `id`, `dist`, `trading_url`, `web_status_url`, `http_ip`, `http_plat`, `httpd_enable`, `httpd_port`, `check_sum`) VALUES ('tte_test','10.2.50.57',12011,1,'test','http://10.3.102.49','http://treasure.gyyx.com','*','1aó?',1,85,'');
-INSERT INTO `tts` (`tts`, `ip`, `port`, `id`, `dist`, `trading_url`, `web_status_url`, `http_ip`, `http_plat`, `httpd_enable`, `httpd_port`, `check_sum`) VALUES ('tts_jiangw','118.24.7.124',8600,1,'普天同庆','http://10.2.50.58/simulateforum/trading.php','http://treasure.gyyx.com','*','1aó?',1,85,'');
+INSERT INTO `tts` (`tts`, `ip`, `port`, `id`, `dist`, `trading_url`, `web_status_url`, `http_ip`, `http_plat`, `httpd_enable`, `httpd_port`, `check_sum`) VALUES ('tts_jiangw','{{FALLBACK_IP}}',8600,1,'普天同庆','http://10.2.50.58/simulateforum/trading.php','http://treasure.gyyx.com','*','1aó?',1,85,'');
 INSERT INTO `tts` (`tts`, `ip`, `port`, `id`, `dist`, `trading_url`, `web_status_url`, `http_ip`, `http_plat`, `httpd_enable`, `httpd_port`, `check_sum`) VALUES ('tts_quls','10.3.102.203',8600,1,'quls_30','http://10.3.102.49','http://treasure.gyyx.com','*','1aó?',1,85,'');
 INSERT INTO `tts` (`tts`, `ip`, `port`, `id`, `dist`, `trading_url`, `web_status_url`, `http_ip`, `http_plat`, `httpd_enable`, `httpd_port`, `check_sum`) VALUES ('tts_shuxx','10.3.4.12',9000,1,'shuxx','http://10.2.16.7','http://treasure.gyyx.com','*','1aó?',0,85,'');
 INSERT INTO `tts` (`tts`, `ip`, `port`, `id`, `dist`, `trading_url`, `web_status_url`, `http_ip`, `http_plat`, `httpd_enable`, `httpd_port`, `check_sum`) VALUES ('tts_xuj','10.3.4.10',8600,1,'xuj','','','','',0,9550,'');
