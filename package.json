@@ -52,14 +52,13 @@
   "scripts": {
     "dev": "tsdown --watch",
     "build": "cross-env NODE_ENV=production tsdown",
-    "test": "vitest",
-    "test:run": "vitest run",
+    "test": "vitest run",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "typecheck": "tsc -b",
-    "check": "pnpm lint && pnpm format && pnpm typecheck && pnpm test:run",
+    "check": "pnpm lint && pnpm format && pnpm typecheck && pnpm test",
     "check:fix": "pnpm lint:fix && pnpm format:fix",
     "pack:check": "npm pack --dry-run --ignore-scripts --cache node_modules/.cache/npm",
     "prepublishOnly": "pnpm check && pnpm build && pnpm pack:check"
